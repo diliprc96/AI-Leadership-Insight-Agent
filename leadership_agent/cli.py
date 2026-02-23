@@ -2,17 +2,23 @@
 cli.py — Command-line interface for the Leadership Agent.
 
 Usage:
-    # Interactive mode
-    python leadership_agent/cli.py
+    # Recommended
+    python -m leadership_agent.cli --query "What are the key risks in 2024?"
 
-    # Single query mode
-    python leadership_agent/cli.py --query "What are the key risks in 2024?"
+    # Also works from project root
+    python leadership_agent/cli.py --query "..."
 """
 
 import argparse
 import sys
 import textwrap
 from pathlib import Path
+
+# ── Ensure project root is on sys.path (works for both invocation styles) ─────
+# When run as `python leadership_agent/cli.py`, the parent dir may not be on path.
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
 
 # ── Bootstrap logging before any other project imports ────────────────────────
 from leadership_agent.logging_config import setup_logging

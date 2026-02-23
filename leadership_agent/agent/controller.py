@@ -4,8 +4,8 @@ controller.py — LangGraph graph definition and execution controller.
 Graph topology:
     START → planner → tool_executor → synthesizer → END
 
-The synthesizer calls Amazon Nova Pro to compose a final answer
-from the tool output and original query.
+v1.0 (Stable): Narrative Q&A via RetrieverTool only.
+    FinancialTool / PlotTool are implemented but disabled — see Phase 2.
 """
 
 import json
@@ -28,13 +28,20 @@ from leadership_agent.config import (
 from leadership_agent.agent.state import AgentState
 from leadership_agent.agent.planner import planner_node
 from leadership_agent.tools.retriever_tool import retriever_tool
-from leadership_agent.tools.financial_tool import financial_tool
-from leadership_agent.tools.plot_tool import plot_tool
+
+# ── Phase 2 tools (implemented, not yet stable — disabled for v1.0) ────────────
+# from leadership_agent.tools.financial_tool import financial_tool
+# from leadership_agent.tools.plot_tool import plot_tool
 
 logger = logging.getLogger(__name__)
 
+_PHASE2_NOTE = (
+    "Financial trend analysis and chart generation are planned for Phase 2. "
+    "Searching the narrative report text instead."
+)
 
-# ─── Bedrock client (module-level lazy singleton) ──────────────────────────────
+
+# ─── Bedrock client (lazy singleton) ──────────────────────────────────────────
 _bedrock_client = None
 
 
@@ -54,64 +61,70 @@ def _get_bedrock():
 
 def tool_executor_node(state: AgentState) -> AgentState:
     """
-    Execute the tool selected by the planner and update state.
+    v1.0: Only the RetrieverTool is active.
+
+    If the planner routes to 'financial' or 'plot', we redirect to the
+    retriever and append a Phase 2 note.  Tool files remain in the repo
+    for Phase 2 activation.
     """
     plan = state["plan"]
     query = state["query"]
-    logger.info("ToolExecutorNode: invoking tool='%s'", plan)
     t0 = time.perf_counter()
 
     tool_output = ""
-    image_path = None
     sources: list[dict[str, Any]] = []
     error = None
+    phase2_redirected = False
+
+    # ── Phase 2 redirect ─────────────────────────────────────────────────────
+    if plan in ("financial", "plot"):
+        logger.info(
+            "ToolExecutorNode: '%s' is a Phase 2 feature — redirecting to retriever. query=%r",
+            plan, query[:80],
+        )
+        phase2_redirected = True
+        plan = "retriever"
+
+    logger.info("ToolExecutorNode: invoking tool='retriever'")
 
     try:
-        if plan == "retriever":
-            raw = retriever_tool.invoke({"query": query})
-            tool_output = raw
-            # Extract sources from retriever output
-            parsed = json.loads(raw)
-            if parsed.get("status") == "ok":
-                sources = [
-                    {"id": c["id"], "score": c["score"], **c["metadata"]}
-                    for c in parsed.get("chunks", [])
-                ]
-
-        elif plan == "financial":
-            raw = financial_tool.invoke({"query": query})
-            tool_output = raw
-
-        elif plan == "plot":
-            raw = plot_tool.invoke({"query": query})
-            tool_output = raw
-            parsed = json.loads(raw)
-            image_path = parsed.get("image_path")
-
-        else:
-            # Unknown plan — fall back to retriever
-            logger.warning("Unknown plan '%s' — falling back to retriever", plan)
-            raw = retriever_tool.invoke({"query": query})
-            tool_output = raw
+        raw = retriever_tool.invoke({"query": query})
+        tool_output = raw
+        parsed = json.loads(raw)
+        if parsed.get("status") == "ok":
+            sources = [
+                {"id": c["id"], "score": c["score"], **c["metadata"]}
+                for c in parsed.get("chunks", [])
+            ]
+        elif parsed.get("status") == "empty":
+            logger.warning("RetrieverTool: no results for query=%r", query[:80])
 
     except Exception as exc:
         logger.error("ToolExecutorNode error: %s", exc, exc_info=True)
         error = str(exc)
         tool_output = json.dumps({"status": "error", "message": error})
 
+    # Inject phase2 note so synthesizer can mention it gracefully
+    if phase2_redirected:
+        try:
+            parsed_out = json.loads(tool_output)
+            parsed_out["phase2_note"] = _PHASE2_NOTE
+            tool_output = json.dumps(parsed_out)
+        except Exception:
+            pass
+
     elapsed = time.perf_counter() - t0
     logger.info(
-        "ToolExecutorNode complete — tool=%s, elapsed=%.3fs, sources=%d",
-        plan, elapsed, len(sources),
+        "ToolExecutorNode complete — elapsed=%.3fs, sources=%d",
+        elapsed, len(sources),
     )
-    logger.debug("Tool raw output preview: %s", str(tool_output)[:300])
 
     return {
         **state,
         "tool_outputs": tool_output,
-        "tools_used": [plan],
+        "tools_used": ["retriever"],
         "sources": sources,
-        "image_path": image_path,
+        "image_path": None,
         "error": error,
         "metrics": {
             **state.get("metrics", {}),
@@ -125,27 +138,22 @@ def tool_executor_node(state: AgentState) -> AgentState:
 _SYSTEM_PROMPT = (
     "You are a financial intelligence assistant specialising in Microsoft 10-K annual reports "
     "(FY2023–FY2025). Use the provided tool output to give a clear, concise, factual answer. "
+    "If the tool output mentions a phase2_note, include it politely in your answer. "
     "If numeric data is present, highlight key figures. "
-    "If a chart was generated, mention that a visual is available. "
     "Keep the answer under 300 words."
 )
 
 
 def synthesizer_node(state: AgentState) -> AgentState:
-    """
-    Call Nova Pro to compose a final answer from the tool output.
-    """
+    """Call Nova Pro to compose a final answer from the tool output."""
     query = state["query"]
     tool_outputs = state.get("tool_outputs", "{}")
-    image_path = state.get("image_path")
     logger.info("SynthesizerNode: composing answer for query=%r", query[:80])
     t0 = time.perf_counter()
 
-    # Build user message
-    context_note = f"\n\nA chart has been saved to: {image_path}" if image_path else ""
     user_msg = (
         f"User Question: {query}\n\n"
-        f"Tool Output (JSON):\n{tool_outputs}{context_note}\n\n"
+        f"Tool Output (JSON):\n{tool_outputs}\n\n"
         f"Please provide a clear, factual answer based on the tool output."
     )
 
@@ -173,7 +181,7 @@ def synthesizer_node(state: AgentState) -> AgentState:
             final_answer = response["output"]["message"]["content"][0]["text"]
             usage = response.get("usage", {})
             logger.info(
-                "SynthesizerNode: LLM response length=%d chars, tokens_in=%s, tokens_out=%s",
+                "SynthesizerNode: answer_len=%d, tokens_in=%s, tokens_out=%s",
                 len(final_answer),
                 usage.get("inputTokens"),
                 usage.get("outputTokens"),
@@ -216,7 +224,6 @@ def build_graph() -> StateGraph:
     return graph.compile()
 
 
-# Module-level compiled graph (lazy)
 _compiled_graph = None
 
 

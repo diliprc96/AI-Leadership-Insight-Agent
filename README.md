@@ -1,49 +1,90 @@
-# AI Leadership Insight & Decision Agent
+# AI Leadership Insight Agent — v1.0
 
-A modular, locally-runnable **RAG + Tool-Augmented AI Agent** that ingests Microsoft 10-K annual reports (FY2023–FY2025) and answers narrative, financial, and visualization queries.
-
-**Stack**: Amazon Bedrock (Titan Embed v2 + Nova Pro) · LangGraph · Qdrant · Docling · FastAPI
+> **Phase 1 (Stable): Narrative RAG Q&A over Microsoft 10-K reports (FY2023–FY2025)**
 
 ---
 
-## Project Structure
+## Problem Understanding
 
-```
-leadership_agent/
-├── app.py              # FastAPI entry point
-├── cli.py              # CLI entry point
-├── ingest.py           # Ingestion pipeline runner
-├── config.py           # Centralized configuration
-├── logging_config.py   # Structured logging setup
-├── ingestion/
-│   └── pdf_parser.py   # Docling DOCX parser + chunker
-├── embeddings/
-│   └── embedder.py     # Amazon Titan Embed v2 wrapper
-├── vectorstore/
-│   └── qdrant_store.py # Local Qdrant vector DB
-├── tools/
-│   ├── retriever_tool.py   # Semantic search tool
-│   ├── financial_tool.py   # Financial trend analysis tool
-│   └── plot_tool.py        # Matplotlib chart tool
-├── agent/
-│   ├── state.py        # LangGraph AgentState
-│   ├── planner.py      # Query routing (keyword + LLM)
-│   └── controller.py   # LangGraph graph controller
-└── services/
-    └── agent_service.py # Orchestration + metrics
-```
+Corporate 10-K filings contain hundreds of pages of dense financial narrative, risk disclosures, and MD&A commentary. Leadership teams and analysts need to ask focused questions—about risks, strategy shifts, or competitive outlook—without manually trawling through hundreds of pages.
+
+This agent solves that by:
+1. **Ingesting** all three Microsoft 10-K DOCX reports using Docling
+2. **Embedding** the narrative chunks with Amazon Titan Embed v2 (1024-dim) and storing them locally in Qdrant
+3. **Routing** queries through a two-stage planner (keyword → LLM fallback)
+4. **Retrieving** the most relevant passages semantically and **synthesizing** a factual answer via Amazon Nova Pro
 
 ---
 
-## Prerequisites
+## Architecture
 
-- Python 3.11+
-- AWS credentials with Bedrock access (Titan Embed v2 + Nova Pro)
-- Documents in `data/raw/` (DOCX or PDF)
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         INGESTION  (run once)                           │
+│  data/raw/*.docx  →  Docling  →  Chunk+Tag  →  Titan Embed v2          │
+│                                               →  Qdrant (local)        │
+└──────────────────────────────────┬──────────────────────────────────────┘
+                                   │
+                                   ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         AGENT  (LangGraph)                              │
+│                                                                         │
+│  User Query                                                             │
+│      │                                                                  │
+│      ▼                                                                  │
+│  [ Planner ]  ── keyword match  ──►  "retriever"                        │
+│      │         └─ LLM fallback                                          │
+│      ▼                                                                  │
+│  [ Tool Executor ]  ──►  RetrieverTool                                  │
+│                            │  Titan Embed query → Qdrant top-5          │
+│                            └──► scored chunks + metadata                │
+│      ▼                                                                  │
+│  [ Synthesizer ]  ──►  Amazon Nova Pro (Converse API)                   │
+│                          │  Compose factual answer from chunks          │
+│                          └──► Final answer + sources + metrics          │
+│                                                                         │
+│  CLI / FastAPI  ◄────────────────────────────────────────────────────── │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+### Key Components
+
+| Component | File | Description |
+|-----------|------|-------------|
+| Config | `leadership_agent/config.py` | Centralized settings, loads `.env` |
+| Logging | `leadership_agent/logging_config.py` | Rotating file + console |
+| Parser | `ingestion/pdf_parser.py` | Docling DOCX → chunks + table CSVs |
+| Embedder | `embeddings/embedder.py` | Titan Embed v2 batchprocessor |
+| Vector Store | `vectorstore/qdrant_store.py` | Local Qdrant, Cosine similarity |
+| Retriever | `tools/retriever_tool.py` | Semantic search → top-5 scored chunks |
+| Planner | `agent/planner.py` | Keyword routing + Nova Pro fallback |
+| Controller | `agent/controller.py` | LangGraph StateGraph orchestrator |
+| Service | `services/agent_service.py` | Unified `run()` + metrics JSONL |
+| CLI | `leadership_agent/cli.py` | Interactive + single-query interface |
+| API | `leadership_agent/app.py` | FastAPI `POST /query` endpoint |
+| Ingestion | `leadership_agent/ingest.py` | Pipeline runner (parse→embed→store) |
+
+---
+
+## Assumptions
+
+- **Documents:** Three Microsoft 10-K DOCX files (FY2023, FY2024, FY2025) in `data/raw/`
+- **AWS credentials** configured in `.env` with Bedrock access to `us-east-1`
+- **Models available:** `amazon.titan-embed-text-v2:0` and `amazon.nova-pro-v1:0`
+- **Run order:** `ingest.py` must be run once before any agent query
+- **Local execution**: Qdrant runs as a local embedded store (no Docker required)
+- **Filename convention:** `<Company>_<Year>_<doctype>.docx` for metadata inference
 
 ---
 
 ## Setup
+
+### Prerequisites
+- Python 3.11+
+- AWS account with Bedrock access in `us-east-1`
+- Virtual environment (`agent_venv/`)
+
+### Installation
 
 ```powershell
 # 1. Activate virtual environment
@@ -53,101 +94,184 @@ leadership_agent/
 pip install -r requirements.txt
 
 # 3. Configure credentials
-# Edit .env with your AWS keys (already present)
+cp .env.example .env   # then fill in AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+```
+
+### `.env` file
+
+```env
+AWS_ACCESS_KEY_ID=your_key_here
+AWS_SECRET_ACCESS_KEY=your_secret_here
+AWS_DEFAULT_REGION=us-east-1
 ```
 
 ---
 
-## Quickstart
+## How to Run
 
-### Step 1 — Ingest Documents (run once)
+### Step 1 — Ingest Documents (one-time, ~10–15 min)
 
 ```powershell
 python leadership_agent/ingest.py
-# Add --recreate to wipe and rebuild the vector store
+```
+
+Output:
+```
+✅ Ingestion complete!
+   Documents: 3 | Chunks: ~3000 | Time: ~12 min
+```
+
+To rebuild from scratch:
+```powershell
 python leadership_agent/ingest.py --recreate
 ```
 
-### Step 2 — Use the CLI
+### Step 2a — CLI
 
 ```powershell
-# Interactive mode
-python leadership_agent/cli.py
-
 # Single query
-python leadership_agent/cli.py --query "What are the key risks in 2024?"
-python leadership_agent/cli.py --query "How has revenue changed from 2023 to 2025?"
-python leadership_agent/cli.py --query "Show revenue trend graph."
-python leadership_agent/cli.py --query "Compare operating income over 3 years."
+python -m leadership_agent.cli --query "What are the key risks in 2024?"
+
+# Also works as:
+python leadership_agent/cli.py --query "What are the key risks?"
+
+# Interactive mode
+python -m leadership_agent.cli
 ```
 
-### Step 3 — Use the API
+### Step 2b — FastAPI Server
 
 ```powershell
-# Start server
 uvicorn leadership_agent.app:app --reload --port 8000
+```
 
-# Query
+Then POST:
+```bash
 curl -X POST http://localhost:8000/query \
-  -H "Content-Type: application/json" \
-  -d '{"query": "What are the key risks in 2024?"}'
-```
-
-**API Response schema:**
-```json
-{
-  "answer": "...",
-  "tools_used": ["retriever"],
-  "sources": [{"company": "Microsoft", "year": "2024", "section": "Risk Factors", ...}],
-  "image_path": null,
-  "metrics": {"planner_latency_s": 0.001, "tool_latency_s": 1.2, "llm_latency_s": 2.1}
-}
+     -H "Content-Type: application/json" \
+     -d '{"query": "What are the key risks Microsoft faces in FY2024?"}'
 ```
 
 ---
 
-## How It Works
+## Sample Queries
+
+| Query | Type | What it tests |
+|-------|------|---------------|
+| `"What are the key risks Microsoft faces in 2024?"` | Narrative Q&A | Risk Factors section retrieval |
+| `"What is Microsoft's cloud strategy?"` | Narrative Q&A | MD&A + Strategy section |
+| `"How does Microsoft describe its AI investments?"` | Narrative Q&A | Cross-year AI narrative |
+| `"What are the main competition risks?"` | Narrative Q&A | Competition section |
+| `"What happened to revenue between 2023 and 2025?"` | Financial *(Phase 2)* | Redirects to narrative |
+
+---
+
+## Sample Output
 
 ```
-User Query
-    ↓
-Planner (keyword → LLM fallback routing)
-    ├── "risks / strategy / leadership" → RetrieverTool (Qdrant semantic search)
-    ├── "revenue / trend / growth"      → FinancialTool (pandas CSV analysis)
-    └── "chart / graph / plot"          → PlotTool (matplotlib → static/trend.png)
-    ↓
-Tool Output (JSON)
-    ↓
-Synthesizer (Amazon Nova Pro via Converse API)
-    ↓
-Final Answer + Sources + Image Path
+────────────────────────────────────────────────
+
+📝  ANSWER:
+    Microsoft identifies several key risks in its FY2024 10-K filing.
+    Cybersecurity threats, including nation-state actors, remain a top
+    concern... [abbreviated]
+
+🔧  TOOLS USED:  retriever
+
+📚  SOURCES (5):
+    [0.842] Microsoft 2024 — Risk Factors
+    [0.831] Microsoft 2024 — Risk Factors
+    [0.819] Microsoft 2023 — Risk Factors
+    [0.801] Microsoft 2025 — Risk Factors
+    [0.788] Microsoft 2024 — MD&A
+
+⏱️   TIMING:  Planner: 0.00s | Tool: 1.24s | Llm: 3.17s | Total: 4.43s
+
+────────────────────────────────────────────────
 ```
 
 ---
 
-## Configuration
+## Design Decisions
 
-All settings in `leadership_agent/config.py`:
-
-| Parameter | Value |
-|-----------|-------|
-| Embedding model | `amazon.titan-embed-text-v2:0` |
-| Embedding dimension | 1024 |
-| Chunk size | 1200 chars |
-| Chunk overlap | 200 chars |
-| Batch size | 32 |
-| LLM | `amazon.nova-pro-v1:0` |
-| Temperature | 0.2 |
-| Qdrant collection | `leadership_reports` |
-| Distance metric | Cosine |
+| Decision | Rationale |
+|----------|-----------|
+| **Local Qdrant** | No cloud dependency; reproducible local execution; data stays private |
+| **Amazon Titan Embed v2** | Native Bedrock integration; 1024-dim provides rich semantic space |
+| **Amazon Nova Pro** | Cost-efficient LLM via Converse API; strong instruction-following |
+| **Two-stage planner** | Keyword match = 0ms cost for obvious queries; LLM fallback for ambiguous cases |
+| **Docling for parsing** | Handles complex DOCX structure, table extraction, and layout preservation |
+| **Character-level chunking** (1200/200) | Balances context window vs. retrieval precision for long financial docs |
+| **Section tagging** | Heuristic section detection (Risk Factors, MD&A, etc.) improves source attribution |
+| **LangGraph** | Explicit node-edge graph makes the agent pipeline auditable and extensible |
+| **Modular package structure** | Each component (ingestion, embedding, vectorstore, tools, agent) is independently testable |
 
 ---
 
-## Logs & Observability
+## Observability
 
-- **Console + rotating file**: `logs/agent.log` (10 MB × 5 backups)
-- **Per-request metrics**: `logs/metrics.jsonl`
-- **Generated charts**: `static/trend.png`
-- **Extracted tables**: `data/structured/*.csv`
+| Output | Location | Format |
+|--------|----------|--------|
+| Structured logs | `logs/agent.log` | Rotating (10MB × 5 files) |
+| Per-request metrics | `logs/metrics.jsonl` | JSON lines: latency, tool, query |
+| Extracted tables | `data/structured/` | CSV per table per document |
+| API timing header | HTTP response | `X-Process-Time: 4.432` |
 
-Logging covers: ingestion chunks, embedding batches, Qdrant ops, planner decisions, tool outputs, LLM latency, and API request timing.
+---
+
+## Project Structure
+
+```
+AI-Leadership-Insight-Agent/
+├── data/
+│   ├── raw/                        # 10-K DOCX source files (not committed)
+│   └── structured/                 # Auto-generated table CSVs
+├── leadership_agent/
+│   ├── config.py                   # Centralized config + .env loader
+│   ├── logging_config.py           # Structured logging setup
+│   ├── ingest.py                   # Ingestion pipeline runner
+│   ├── cli.py                      # CLI interface
+│   ├── app.py                      # FastAPI application
+│   ├── ingestion/pdf_parser.py     # Docling DOCX parser + chunker
+│   ├── embeddings/embedder.py      # Titan Embed v2 batch embedder
+│   ├── vectorstore/qdrant_store.py # Local Qdrant wrapper
+│   ├── tools/
+│   │   ├── retriever_tool.py       # ✅ Stable: semantic search
+│   │   ├── financial_tool.py       # 🔜 Phase 2: CSV financial analysis
+│   │   └── plot_tool.py            # 🔜 Phase 2: trend visualization
+│   ├── agent/
+│   │   ├── state.py                # LangGraph AgentState TypedDict
+│   │   ├── planner.py              # Tool routing (keyword + LLM)
+│   │   └── controller.py           # LangGraph StateGraph
+│   └── services/agent_service.py   # Orchestration + metrics
+├── logs/                           # Auto-created on first run
+├── qdrant_storage/                 # Auto-created by Qdrant
+├── static/                         # Auto-created (plot output)
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Future Improvements (Phase 2)
+
+| Feature | Status | Description |
+|---------|--------|-------------|
+| **FinancialTool** | 🔜 Planned | Pandas-based CSV analysis, YoY revenue/income growth |
+| **PlotTool** | 🔜 Planned | matplotlib bar + trend charts saved to `static/` |
+| **Multi-doc comparison** | 🔜 Planned | Cross-year semantic comparison with metadata filters |
+| **Table embeddings** | 🔜 Planned | Embed table content in Qdrant for numeric RAG |
+| **Evaluation harness** | 🔜 Planned | Automated RAGAS-style faithfulness + relevancy scoring |
+| **Streaming API** | 🔜 Planned | SSE endpoint for real-time token streaming |
+| **Web UI** | 🔜 Planned | Minimal React interface for interactive Q&A |
+
+---
+
+## Troubleshooting
+
+| Issue | Fix |
+|-------|-----|
+| `ModuleNotFoundError: No module named 'leadership_agent'` | Activate venv: `.\agent_venv\Scripts\Activate.ps1` |
+| `Empty results` from retriever | Run ingestion first: `python leadership_agent/ingest.py` |
+| `ResourceNotFoundException` (Bedrock) | Check `.env` credentials and ensure `us-east-1` region |
+| `msvcrt` error at shutdown | Benign Windows artifact — safe to ignore (suppressed in v1.0 via `atexit`) |

@@ -7,6 +7,7 @@ Dimension:  1024
 Storage:    ./qdrant_storage (configurable via config.py)
 """
 
+import atexit
 import logging
 import time
 import uuid
@@ -20,7 +21,6 @@ from qdrant_client.models import (
     Filter,
     FieldCondition,
     MatchValue,
-    NamedVector,
 )
 
 from leadership_agent.config import (
@@ -48,10 +48,20 @@ class QdrantStore:
         self.path = path
         self.collection = collection
         self._client = QdrantClient(path=path)
+        # Register cleanup BEFORE Python tears down sys.modules — prevents the
+        # Windows msvcrt/portalocker ModuleNotFoundError on interpreter exit.
+        atexit.register(self._cleanup)
         logger.info(
             "QdrantStore initialised — path=%s, collection=%s",
             path, collection,
         )
+
+    def _cleanup(self) -> None:
+        """Gracefully close the Qdrant client on interpreter exit."""
+        try:
+            self._client.close()
+        except Exception:
+            pass  # Silently ignore any errors during shutdown
 
     # ── Collection Management ──────────────────────────────────────────────────
 
