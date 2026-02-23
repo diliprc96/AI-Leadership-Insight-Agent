@@ -1,0 +1,174 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
+  <diagram name="Page-1" id="erw4ziQj1hLS2VJPIMQf">
+    <mxGraphModel dx="2095" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-3" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="300" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-38" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-39">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="60" />
+              <mxPoint x="340" y="60" />
+              <mxPoint x="340" y="-80" />
+            </Array>
+            <mxPoint x="340" y="-80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-40" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="50" />
+              <mxPoint x="480" y="50" />
+            </Array>
+            <mxPoint x="480" y="-90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Document parsing" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-4" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="q_-Kbnn9FhQ-mr01JovL-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-2" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Data store" vertex="1">
+          <mxGeometry height="80" width="60" x="-30" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-7" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="pre-processing and cleaning" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-9" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Chunking" vertex="1">
+          <mxGeometry height="60" width="120" x="425" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Embedding" vertex="1">
+          <mxGeometry height="60" width="120" x="610" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="vector store." vertex="1">
+          <mxGeometry height="60" width="120" x="610" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-11" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-13" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-12" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="User input" vertex="1">
+          <mxGeometry height="60" width="120" x="-90" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Embedding" vertex="1">
+          <mxGeometry height="60" width="120" x="220" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-17" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-27" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Similarity matching" vertex="1">
+          <mxGeometry height="60" width="120" x="400" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-16" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-33" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-34" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-35">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-19" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Insight agent" vertex="1">
+          <mxGeometry height="170" width="195" x="362.5" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Query augmentation" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-22" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-23" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="A simple folder in this use case" vertex="1">
+          <mxGeometry height="30" width="190" x="-120" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-24" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="I will be using docling since it is opensource and easy to use.&amp;nbsp;&lt;br&gt;&lt;br&gt;For production grade I will suggest using a Landing ADE for very accurate results&amp;nbsp;" vertex="1">
+          <mxGeometry height="30" width="260" x="20" y="-20" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="TitAn embedding models if my aws account is working if not i will use opensource&amp;nbsp;&lt;code data-start=&quot;2704&quot; data-end=&quot;2728&quot;&gt;text-embedding-3-large or&lt;/code&gt;&amp;nbsp;&lt;code data-start=&quot;2732&quot; data-end=&quot;2743&quot;&gt;bge-large&lt;/code&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="470" y="-10" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-26" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="I will compare qdrant and FAISS if needed I will use qdrant as a container maybe if not I will stick with FAISS" vertex="1">
+          <mxGeometry height="30" width="210" x="550" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="Retrived chunks + user augmented queries" vertex="1">
+          <mxGeometry height="30" width="250" x="210" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-29" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Tools" vertex="1">
+          <mxGeometry height="120" width="140" x="620" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-30" parent="q_-Kbnn9FhQ-mr01JovL-29" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 1" vertex="1">
+          <mxGeometry height="30" width="140" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-31" parent="q_-Kbnn9FhQ-mr01JovL-29" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 2" vertex="1">
+          <mxGeometry height="30" width="140" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-32" parent="q_-Kbnn9FhQ-mr01JovL-29" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 3" vertex="1">
+          <mxGeometry height="30" width="140" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-35" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Evaluation" vertex="1">
+          <mxGeometry height="60" width="120" x="150" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-37" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;META DATA SAMPLE&lt;br&gt;{&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;text&quot;: &quot;...&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;metadata&quot;: {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;document_type&quot;: &quot;Quarterly Report&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;year&quot;: 2025,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;quarter&quot;: &quot;Q3&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;department&quot;: &quot;Finance&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;source&quot;: &quot;Q3_2025_report.pdf&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="270" x="770" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-44" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-43">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="-210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-39" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Images" vertex="1">
+          <mxGeometry height="60" width="120" x="280" y="-130" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-42" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-41" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Tables" vertex="1">
+          <mxGeometry height="60" width="120" x="420" y="-150" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-47" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-43" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Image description&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="120" x="410" y="-240" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-45" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="The images I am expecting are graphs and finacial trends and so on, so summarizing them to text is better option. if images are going to technical then I might use multimodal embeddings are other methods like human tagging or description to be added" vertex="1">
+          <mxGeometry height="30" width="340" x="-10" y="-210" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-46" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="LLM" vertex="1">
+          <mxGeometry height="30" width="50" x="350" y="-250" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;br&gt;&lt;h3 data-start=&quot;3115&quot; data-end=&quot;3135&quot;&gt;Hybrid Retrieval&lt;/h3&gt;&lt;h3 data-start=&quot;3115&quot; data-end=&quot;3135&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;Vector similarity&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;Keyword/BM25&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: normal;&quot;&gt;Metadata filtering (year, quarter)&lt;/span&gt;&lt;/h3&gt;&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="210" x="760" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-54" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="I will be using gemini models for the API." vertex="1">
+          <mxGeometry height="30" width="60" x="340" y="520" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

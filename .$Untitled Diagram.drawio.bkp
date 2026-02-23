@@ -1,0 +1,86 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
+  <diagram name="Page-1" id="erw4ziQj1hLS2VJPIMQf">
+    <mxGraphModel dx="2095" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-3" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="300" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Document parsing" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-4" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="q_-Kbnn9FhQ-mr01JovL-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-2" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Data store" vertex="1">
+          <mxGeometry height="80" width="60" x="-30" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-7" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="pre-processing and cleaning" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-9" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Chunking" vertex="1">
+          <mxGeometry height="60" width="120" x="425" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Embedding" vertex="1">
+          <mxGeometry height="60" width="120" x="610" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="vector store." vertex="1">
+          <mxGeometry height="60" width="120" x="610" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-11" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-13" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-12" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="User input" vertex="1">
+          <mxGeometry height="60" width="120" x="-90" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Embedding" vertex="1">
+          <mxGeometry height="60" width="120" x="220" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-17" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Similarity matching" vertex="1">
+          <mxGeometry height="60" width="120" x="380" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-16" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-19" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Insight agent" vertex="1">
+          <mxGeometry height="170" width="195" x="380" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Query augmentation" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-22" edge="1" parent="1" source="q_-Kbnn9FhQ-mr01JovL-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q_-Kbnn9FhQ-mr01JovL-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-23" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="A simple folder in this use case" vertex="1">
+          <mxGeometry height="30" width="190" x="-120" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-24" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="I will be using docling since it is opensource and easy to use.&amp;nbsp;&lt;br&gt;&lt;br&gt;For production grade I will suggest using a Landing ADE for very accurate results&amp;nbsp;" vertex="1">
+          <mxGeometry height="30" width="260" x="20" y="-20" as="geometry" />
+        </mxCell>
+        <mxCell id="q_-Kbnn9FhQ-mr01JovL-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Text" vertex="1">
+          <mxGeometry height="30" width="60" x="630" y="10" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
