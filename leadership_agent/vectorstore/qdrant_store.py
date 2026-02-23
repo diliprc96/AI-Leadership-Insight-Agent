@@ -20,6 +20,7 @@ from qdrant_client.models import (
     Filter,
     FieldCondition,
     MatchValue,
+    NamedVector,
 )
 
 from leadership_agent.config import (
@@ -147,6 +148,9 @@ class QdrantStore:
         """
         Search for nearest neighbours.
 
+        Uses query_points() (qdrant-client >= 1.12).
+        Falls back to legacy search() for older versions.
+
         Args:
             query_vector: Embedded query vector.
             top_k:        Number of results to return.
@@ -165,13 +169,28 @@ class QdrantStore:
             qdrant_filter = Filter(must=conditions)
 
         t0 = time.perf_counter()
-        hits = self._client.search(
-            collection_name=self.collection,
-            query_vector=query_vector,
-            limit=top_k,
-            query_filter=qdrant_filter,
-            with_payload=True,
-        )
+
+        # qdrant-client >= 1.12: use query_points()
+        try:
+            response = self._client.query_points(
+                collection_name=self.collection,
+                query=query_vector,
+                limit=top_k,
+                query_filter=qdrant_filter,
+                with_payload=True,
+            )
+            hits = response.points
+        except AttributeError:
+            # Fallback for qdrant-client < 1.12
+            logger.debug("query_points() not available — falling back to search()")
+            hits = self._client.search(  # type: ignore[attr-defined]
+                collection_name=self.collection,
+                query_vector=query_vector,
+                limit=top_k,
+                query_filter=qdrant_filter,
+                with_payload=True,
+            )
+
         elapsed = time.perf_counter() - t0
 
         results = []

@@ -1,0 +1,665 @@
+[2026-02-23 23:25:04] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-23 23:25:09] [INFO    ] [__main__] ============================================================
+[2026-02-23 23:25:09] [INFO    ] [__main__] INGESTION PIPELINE START
+[2026-02-23 23:25:09] [INFO    ] [__main__] ============================================================
+[2026-02-23 23:25:09] [INFO    ] [__main__] Step 1/3: Parsing documents from C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\data\raw
+[2026-02-23 23:25:09] [INFO    ] [leadership_agent.ingestion.pdf_parser] Found 3 document(s) to ingest: ['MSFT_FY23Q4_10K.docx', 'MSFT_FY24Q4_10K.docx', 'MSFT_FY25q4_10K.docx']
+[2026-02-23 23:25:09] [INFO    ] [leadership_agent.ingestion.pdf_parser] Starting ingestion for: MSFT_FY23Q4_10K.docx
+[2026-02-23 23:25:09] [INFO    ] [leadership_agent.ingestion.pdf_parser] Inferred metadata: {'company': 'Microsoft', 'year': '2023', 'document_type': '10K'}
+[2026-02-23 23:25:09] [INFO    ] [docling.datamodel.document] detected formats: [<InputFormat.DOCX: 'docx'>]
+[2026-02-23 23:25:09] [INFO    ] [docling.document_converter] Going to convert document batch...
+[2026-02-23 23:25:09] [INFO    ] [docling.document_converter] Initializing pipeline for SimplePipeline with options hash 35a8e94b10f7fb06f9f42c09d469bf86
+[2026-02-23 23:25:09] [INFO    ] [docling.models.factories.base_factory] Loading plugin 'docling_defaults'
+[2026-02-23 23:25:09] [INFO    ] [docling.models.factories] Registered picture descriptions: ['picture_description_vlm_engine', 'vlm', 'api']
+[2026-02-23 23:25:09] [INFO    ] [docling.pipeline.base_pipeline] Processing document MSFT_FY23Q4_10K.docx
+[2026-02-23 23:25:29] [INFO    ] [docling.document_converter] Finished converting document MSFT_FY23Q4_10K.docx in 19.89 sec.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Text chunks created: 679
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_1.csv (8 rows × 2 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_2.csv (1 rows × 3 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_3.csv (11 rows × 5 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_4.csv (2 rows × 3 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_5.csv (60 rows × 8 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_6.csv (10 rows × 7 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_7.csv (10 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_8.csv (11 rows × 22 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_9.csv (7 rows × 17 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_10.csv (4 rows × 3 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_11.csv (12 rows × 3 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_12.csv (8 rows × 3 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_13.csv (13 rows × 12 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_14.csv (21 rows × 12 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_15.csv (5 rows × 12 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_16.csv (5 rows × 14 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_17.csv (5 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_18.csv (14 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_19.csv (31 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_20.csv (13 rows × 5 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_21.csv (12 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_22.csv (7 rows × 1 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_23.csv (10 rows × 10 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_24.csv (45 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_25.csv (18 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_26.csv (62 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_27.csv (59 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_28.csv (41 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_29.csv (11 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_30.csv (10 rows × 18 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_31.csv (19 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_32.csv (14 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_33.csv (11 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_34.csv (11 rows × 14 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_35.csv (73 rows × 44 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_36.csv (13 rows × 25 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_37.csv (13 rows × 25 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_38.csv (12 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_39.csv (16 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_40.csv (35 rows × 17 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_41.csv (12 rows × 17 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_42.csv (25 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_43.csv (9 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_44.csv (11 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_45.csv (17 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_46.csv (10 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_47.csv (9 rows × 10 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_48.csv (11 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_49.csv (8 rows × 10 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_50.csv (10 rows × 29 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_51.csv (12 rows × 25 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_52.csv (12 rows × 17 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_53.csv (14 rows × 5 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_54.csv (27 rows × 25 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_55.csv (14 rows × 6 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_56.csv (26 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_57.csv (10 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_58.csv (17 rows × 17 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_59.csv (47 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_60.csv (14 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_61.csv (11 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_62.csv (11 rows × 5 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_63.csv (14 rows × 15 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_64.csv (13 rows × 15 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_65.csv (42 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_66.csv (19 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_67.csv (11 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_68.csv (12 rows × 25 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_69.csv (23 rows × 17 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_70.csv (50 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_71.csv (7 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_72.csv (9 rows × 17 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_73.csv (14 rows × 9 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_74.csv (7 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_75.csv (23 rows × 17 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_76.csv (10 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_77.csv (18 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_78.csv (11 rows × 13 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_79.csv (15 rows × 4 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_80.csv (99 rows × 24 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_81.csv (4 rows × 1 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_82.csv (29 rows × 3 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_83.csv (10 rows × 3 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_84.csv (4 rows × 1 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_85.csv (4 rows × 1 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_86.csv (4 rows × 1 cols)
+[2026-02-23 23:25:29] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2023_table_87.csv (4 rows × 1 cols)
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Tables saved to data/structured/: 87
+[2026-02-23 23:25:29] [INFO    ] [leadership_agent.ingestion.pdf_parser] Ingestion complete: MSFT_FY23Q4_10K.docx — 679 chunks in 20.54s
+[2026-02-23 23:25:30] [INFO    ] [leadership_agent.ingestion.pdf_parser] Cumulative chunk total: 679
+[2026-02-23 23:25:30] [INFO    ] [leadership_agent.ingestion.pdf_parser] Starting ingestion for: MSFT_FY24Q4_10K.docx
+[2026-02-23 23:25:30] [INFO    ] [leadership_agent.ingestion.pdf_parser] Inferred metadata: {'company': 'Microsoft', 'year': '2024', 'document_type': '10K'}
+[2026-02-23 23:25:30] [INFO    ] [docling.datamodel.document] detected formats: [<InputFormat.DOCX: 'docx'>]
+[2026-02-23 23:25:30] [INFO    ] [docling.document_converter] Going to convert document batch...
+[2026-02-23 23:25:30] [INFO    ] [docling.document_converter] Initializing pipeline for SimplePipeline with options hash 35a8e94b10f7fb06f9f42c09d469bf86
+[2026-02-23 23:25:30] [INFO    ] [docling.pipeline.base_pipeline] Processing document MSFT_FY24Q4_10K.docx
+[2026-02-23 23:25:54] [INFO    ] [docling.document_converter] Finished converting document MSFT_FY24Q4_10K.docx in 24.92 sec.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Text chunks created: 867
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_1.csv (8 rows × 2 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_2.csv (1 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_3.csv (11 rows × 5 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_4.csv (2 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_5.csv (62 rows × 8 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_6.csv (10 rows × 7 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_7.csv (10 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_8.csv (11 rows × 22 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_9.csv (7 rows × 17 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_10.csv (4 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_11.csv (12 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_12.csv (8 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_13.csv (13 rows × 12 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_14.csv (21 rows × 12 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_15.csv (5 rows × 12 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_16.csv (5 rows × 14 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_17.csv (5 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_18.csv (14 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_19.csv (29 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_20.csv (13 rows × 5 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_21.csv (12 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_22.csv (7 rows × 1 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_23.csv (10 rows × 10 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_24.csv (45 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_25.csv (18 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_26.csv (63 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_27.csv (60 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_28.csv (39 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_29.csv (11 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_30.csv (10 rows × 18 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_31.csv (19 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_32.csv (14 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_33.csv (11 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_34.csv (11 rows × 14 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_35.csv (73 rows × 38 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_36.csv (13 rows × 25 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_37.csv (13 rows × 25 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_38.csv (12 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_39.csv (16 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_40.csv (36 rows × 17 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_41.csv (12 rows × 17 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_42.csv (25 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_43.csv (9 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_44.csv (11 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_45.csv (17 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_46.csv (14 rows × 5 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_47.csv (9 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_48.csv (7 rows × 5 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_49.csv (8 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_50.csv (10 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_51.csv (9 rows × 10 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_52.csv (10 rows × 29 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_53.csv (12 rows × 25 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_54.csv (12 rows × 17 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_55.csv (14 rows × 5 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_56.csv (29 rows × 25 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_57.csv (14 rows × 6 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_58.csv (26 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_59.csv (10 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_60.csv (17 rows × 17 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_61.csv (46 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_62.csv (14 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_63.csv (11 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_64.csv (11 rows × 5 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_65.csv (14 rows × 15 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_66.csv (13 rows × 15 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_67.csv (42 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_68.csv (19 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_69.csv (11 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_70.csv (12 rows × 25 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_71.csv (23 rows × 17 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_72.csv (49 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_73.csv (7 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_74.csv (9 rows × 17 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_75.csv (14 rows × 9 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_76.csv (7 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_77.csv (23 rows × 17 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_78.csv (10 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_79.csv (18 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_80.csv (10 rows × 13 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_81.csv (15 rows × 4 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_82.csv (117 rows × 24 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_83.csv (4 rows × 1 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_84.csv (29 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_90.csv (1 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_91.csv (2 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_92.csv (1 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_107.csv (12 rows × 3 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_108.csv (4 rows × 1 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_109.csv (4 rows × 1 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_110.csv (4 rows × 1 cols)
+[2026-02-23 23:25:55] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2024_table_111.csv (4 rows × 1 cols)
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Tables saved to data/structured/: 92
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Ingestion complete: MSFT_FY24Q4_10K.docx — 867 chunks in 25.63s
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Cumulative chunk total: 1546
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Starting ingestion for: MSFT_FY25q4_10K.docx
+[2026-02-23 23:25:55] [INFO    ] [leadership_agent.ingestion.pdf_parser] Inferred metadata: {'company': 'Microsoft', 'year': '2025', 'document_type': '10K'}
+[2026-02-23 23:25:55] [INFO    ] [docling.datamodel.document] detected formats: [<InputFormat.DOCX: 'docx'>]
+[2026-02-23 23:25:55] [INFO    ] [docling.document_converter] Going to convert document batch...
+[2026-02-23 23:25:55] [INFO    ] [docling.document_converter] Initializing pipeline for SimplePipeline with options hash 35a8e94b10f7fb06f9f42c09d469bf86
+[2026-02-23 23:25:55] [INFO    ] [docling.pipeline.base_pipeline] Processing document MSFT_FY25q4_10K.docx
+[2026-02-23 23:26:18] [INFO    ] [docling.document_converter] Finished converting document MSFT_FY25q4_10K.docx in 22.77 sec.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Text chunks created: 822
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_1.csv (8 rows × 2 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_2.csv (1 rows × 3 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_3.csv (11 rows × 5 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_4.csv (2 rows × 3 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_5.csv (62 rows × 8 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_6.csv (10 rows × 7 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_7.csv (10 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_8.csv (11 rows × 22 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_9.csv (7 rows × 17 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_10.csv (4 rows × 3 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_11.csv (12 rows × 3 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_12.csv (4 rows × 3 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_13.csv (8 rows × 12 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_14.csv (40 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_15.csv (5 rows × 12 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_16.csv (5 rows × 14 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_17.csv (5 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_18.csv (14 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_19.csv (13 rows × 5 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_20.csv (12 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_21.csv (7 rows × 1 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_22.csv (10 rows × 10 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_23.csv (45 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_24.csv (18 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_25.csv (63 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_26.csv (60 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_27.csv (39 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_28.csv (19 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_29.csv (14 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_30.csv (11 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_31.csv (11 rows × 14 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_32.csv (36 rows × 38 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_33.csv (36 rows × 38 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_34.csv (13 rows × 25 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_35.csv (13 rows × 25 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_36.csv (12 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_37.csv (16 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_38.csv (37 rows × 17 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_39.csv (12 rows × 17 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_40.csv (21 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_41.csv (9 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_42.csv (17 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_43.csv (14 rows × 5 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_44.csv (9 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_45.csv (8 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_46.csv (10 rows × 29 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_47.csv (12 rows × 25 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_48.csv (12 rows × 17 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_49.csv (14 rows × 5 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_50.csv (29 rows × 25 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_51.csv (14 rows × 6 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_52.csv (26 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_53.csv (10 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_54.csv (16 rows × 17 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_55.csv (46 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_56.csv (14 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_57.csv (11 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_58.csv (11 rows × 5 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_59.csv (14 rows × 15 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_60.csv (13 rows × 15 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_61.csv (42 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_62.csv (19 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_63.csv (11 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_64.csv (12 rows × 25 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_65.csv (23 rows × 17 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_66.csv (49 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_67.csv (7 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_68.csv (9 rows × 17 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_69.csv (14 rows × 9 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_70.csv (7 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:18] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_71.csv (43 rows × 13 cols)
+[2026-02-23 23:26:18] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_72.csv (10 rows × 13 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_73.csv (18 rows × 13 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_74.csv (10 rows × 13 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_75.csv (15 rows × 4 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_76.csv (113 rows × 23 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_77.csv (4 rows × 1 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_78.csv (29 rows × 3 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_79.csv (5 rows × 4 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_80.csv (23 rows × 3 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_81.csv (18 rows × 9 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_82.csv (5 rows × 2 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_83.csv (22 rows × 3 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_84.csv (11 rows × 3 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_85.csv (4 rows × 1 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_86.csv (4 rows × 1 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_87.csv (4 rows × 1 cols)
+[2026-02-23 23:26:19] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: Microsoft_2025_table_88.csv (4 rows × 1 cols)
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Tables saved to data/structured/: 88
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Ingestion complete: MSFT_FY25q4_10K.docx — 822 chunks in 23.39s
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] Cumulative chunk total: 2368
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.ingestion.pdf_parser] All documents ingested. Total chunks: 2368
+[2026-02-23 23:26:19] [INFO    ] [__main__] Step 1/3 complete — 2368 chunks produced
+[2026-02-23 23:26:19] [INFO    ] [__main__] Step 2/3: Generating embeddings for 2368 chunks...
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.embeddings.embedder] TitanEmbedder initialised — model=amazon.titan-embed-text-v2:0, dim=1024, batch_size=32
+[2026-02-23 23:26:19] [INFO    ] [leadership_agent.embeddings.embedder] Embedding 2368 texts in 74 batch(es)...
+[2026-02-23 23:42:29] [INFO    ] [leadership_agent.embeddings.embedder] Embedding complete — 2368 vectors, dim=1024, elapsed=970.61s
+[2026-02-23 23:42:29] [INFO    ] [__main__] Step 2/3 complete — 2368 embeddings, dim=1024
+[2026-02-23 23:42:29] [INFO    ] [__main__] Step 3/3: Storing vectors in Qdrant...
+[2026-02-23 23:42:29] [INFO    ] [leadership_agent.vectorstore.qdrant_store] QdrantStore initialised — path=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\qdrant_storage, collection=leadership_reports
+[2026-02-23 23:42:29] [INFO    ] [leadership_agent.vectorstore.qdrant_store] Collection 'leadership_reports' already exists — skipping creation.
+[2026-02-23 23:42:35] [INFO    ] [leadership_agent.vectorstore.qdrant_store] Upserted 2368 points in 5.77s — collection total: 2368
+[2026-02-23 23:42:35] [INFO    ] [__main__] ============================================================
+[2026-02-23 23:42:35] [INFO    ] [__main__] INGESTION COMPLETE
+[2026-02-23 23:42:35] [INFO    ] [__main__]   Documents parsed : 3 files
+[2026-02-23 23:42:35] [INFO    ] [__main__]   Chunks created   : 2368
+[2026-02-23 23:42:35] [INFO    ] [__main__]   Vectors stored   : 2368
+[2026-02-23 23:42:35] [INFO    ] [__main__]   Total time       : 1046.31s
+[2026-02-23 23:42:35] [INFO    ] [__main__]   Collection total : 2368
+[2026-02-23 23:42:35] [INFO    ] [__main__] ============================================================
+[2026-02-23 23:48:04] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-23 23:48:21] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-23 23:48:22] [INFO    ] [leadership_agent.services.agent_service] AgentService initialised
+[2026-02-23 23:48:22] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() — query='what are the key risks in 2024?'
+[2026-02-23 23:48:22] [INFO    ] [leadership_agent.agent.controller] AgentController: start — query='what are the key risks in 2024?'
+[2026-02-23 23:48:22] [INFO    ] [leadership_agent.agent.controller] Building LangGraph StateGraph...
+[2026-02-23 23:48:22] [INFO    ] [leadership_agent.agent.controller] Graph compiled successfully.
+[2026-02-23 23:48:22] [INFO    ] [leadership_agent.agent.planner] PlannerNode: classifying query — 'what are the key risks in 2024?'
+[2026-02-23 23:48:24] [INFO    ] [leadership_agent.agent.planner] PlannerNode: selected tool='retriever', reasoning='The query asks for narrative, qualitative information about key risks.', elapsed=1.580s
+[2026-02-23 23:48:24] [INFO    ] [leadership_agent.agent.controller] ToolExecutorNode: invoking tool='retriever'
+[2026-02-23 23:48:24] [INFO    ] [leadership_agent.tools.retriever_tool] RetrieverTool invoked — query: 'what are the key risks in 2024?'
+[2026-02-23 23:48:24] [INFO    ] [leadership_agent.embeddings.embedder] TitanEmbedder initialised — model=amazon.titan-embed-text-v2:0, dim=1024, batch_size=32
+[2026-02-23 23:48:24] [INFO    ] [leadership_agent.vectorstore.qdrant_store] QdrantStore initialised — path=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\qdrant_storage, collection=leadership_reports
+[2026-02-23 23:48:24] [INFO    ] [leadership_agent.embeddings.embedder] Embedding 1 texts in 1 batch(es)...
+[2026-02-23 23:48:25] [INFO    ] [leadership_agent.embeddings.embedder] Embedding complete — 1 vectors, dim=1024, elapsed=1.47s
+[2026-02-23 23:48:25] [ERROR   ] [leadership_agent.tools.retriever_tool] RetrieverTool error: 'QdrantClient' object has no attribute 'search'
+Traceback (most recent call last):
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\leadership_agent\tools\retriever_tool.py", line 68, in retriever_tool
+    results = store.search(query_vector, top_k=QDRANT_TOP_K)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\leadership_agent\vectorstore\qdrant_store.py", line 168, in search
+    hits = self._client.search(
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'QdrantClient' object has no attribute 'search'
+[2026-02-23 23:48:25] [INFO    ] [leadership_agent.agent.controller] ToolExecutorNode complete — tool=retriever, elapsed=1.690s, sources=0
+[2026-02-23 23:48:25] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode: composing answer for query='what are the key risks in 2024?'
+[2026-02-23 23:48:27] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode: LLM response length=275 chars, tokens_in=141, tokens_out=68
+[2026-02-23 23:48:27] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode complete in 1.552s
+[2026-02-23 23:48:27] [INFO    ] [leadership_agent.agent.controller] AgentController: done — tool=retriever, answer_len=275, total=4.892s
+[2026-02-23 23:48:27] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() complete — total=4.893s, tools=['retriever'], answer_len=275
+[2026-02-23 23:59:58] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-24 00:00:00] [INFO    ] [leadership_agent.services.agent_service] AgentService initialised
+[2026-02-24 00:00:00] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() — query='what are the key risks in 2024?'
+[2026-02-24 00:00:00] [INFO    ] [leadership_agent.agent.controller] AgentController: start — query='what are the key risks in 2024?'
+[2026-02-24 00:00:00] [INFO    ] [leadership_agent.agent.controller] Building LangGraph StateGraph...
+[2026-02-24 00:00:00] [INFO    ] [leadership_agent.agent.controller] Graph compiled successfully.
+[2026-02-24 00:00:00] [INFO    ] [leadership_agent.agent.planner] PlannerNode: classifying query — 'what are the key risks in 2024?'
+[2026-02-24 00:00:02] [INFO    ] [leadership_agent.agent.planner] PlannerNode: selected tool='retriever', reasoning='The query asks for narrative, qualitative information about key risks.', elapsed=1.864s
+[2026-02-24 00:00:02] [INFO    ] [leadership_agent.agent.controller] ToolExecutorNode: invoking tool='retriever'
+[2026-02-24 00:00:02] [INFO    ] [leadership_agent.tools.retriever_tool] RetrieverTool invoked — query: 'what are the key risks in 2024?'
+[2026-02-24 00:00:02] [INFO    ] [leadership_agent.embeddings.embedder] TitanEmbedder initialised — model=amazon.titan-embed-text-v2:0, dim=1024, batch_size=32
+[2026-02-24 00:00:03] [INFO    ] [leadership_agent.vectorstore.qdrant_store] QdrantStore initialised — path=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\qdrant_storage, collection=leadership_reports
+[2026-02-24 00:00:03] [INFO    ] [leadership_agent.embeddings.embedder] Embedding 1 texts in 1 batch(es)...
+[2026-02-24 00:00:04] [INFO    ] [leadership_agent.embeddings.embedder] Embedding complete — 1 vectors, dim=1024, elapsed=1.72s
+[2026-02-24 00:00:04] [INFO    ] [leadership_agent.vectorstore.qdrant_store] Search complete — top_k=5, hits=5, elapsed=0.013s
+[2026-02-24 00:00:04] [INFO    ] [leadership_agent.tools.retriever_tool] Retrieved 5 chunks — IDs: ['19a60581', '61acd0da', '3f525507', 'ec3960c1', 'a8dbbd03'] | Scores: [0.4559, 0.4446, 0.4407, 0.2989, 0.2924]
+[2026-02-24 00:00:04] [INFO    ] [leadership_agent.tools.retriever_tool] RetrieverTool completed in 2.042s
+[2026-02-24 00:00:04] [INFO    ] [leadership_agent.agent.controller] ToolExecutorNode complete — tool=retriever, elapsed=2.044s, sources=5
+[2026-02-24 00:00:04] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode: composing answer for query='what are the key risks in 2024?'
+[2026-02-24 00:00:08] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode: LLM response length=721 chars, tokens_in=1989, tokens_out=148
+[2026-02-24 00:00:08] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode complete in 3.174s
+[2026-02-24 00:00:08] [INFO    ] [leadership_agent.agent.controller] AgentController: done — tool=retriever, answer_len=721, total=7.105s
+[2026-02-24 00:00:08] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() complete — total=7.105s, tools=['retriever'], answer_len=721
