@@ -2,11 +2,14 @@
 cli.py — Command-line interface for the Leadership Agent.
 
 Usage:
-    # Recommended
+    # Single query
     python -m leadership_agent.cli --query "What are the key risks in 2024?"
 
-    # Also works from project root
-    python leadership_agent/cli.py --query "..."
+    # Single query with inline RAGAS evaluation
+    python -m leadership_agent.cli --query "What are the key risks in 2024?" --eval
+
+    # Interactive mode (with optional eval scoring per answer)
+    python -m leadership_agent.cli --eval
 """
 
 import argparse
@@ -85,6 +88,42 @@ def print_response(response: dict) -> None:
     print(f"\n{_DIVIDER}\n")
 
 
+def print_eval_result(eval_result) -> None:
+    """Print inline RAGAS evaluation scores after an answer."""
+    print(f"\n{'─' * 60}")
+    print("📊  RAGAS EVALUATION")
+    print(f"    Faithfulness    : {eval_result.faithfulness:.2f}  (answer grounded in context?)")
+    print(f"    Answer Relevancy: {eval_result.answer_relevancy:.2f}  (answer addresses the question?)")
+    print(f"    Context Recall  : {eval_result.context_recall:.2f}  (chunks above similarity threshold?)")
+    mean = eval_result.mean_score
+    bar = "█" * int(mean * 10) + "░" * (10 - int(mean * 10))
+    print(f"    Overall Mean    : {mean:.2f}  [{bar}]")
+    if eval_result.error:
+        print(f"    ⚠️  Eval error: {eval_result.error}")
+    print(f"    Eval latency    : {eval_result.latency_s:.2f}s")
+    print(f"{'─' * 60}\n")
+
+
+def run_eval_on_response(query: str, response: dict) -> None:
+    """Run RAGAS scoring on a completed agent response and print results."""
+    from leadership_agent.eval.ragas_eval import RAGASEvaluator
+    sources = response.get("sources", [])
+    contexts = [s.get("text", "") for s in sources if s.get("text")]
+    answer = response.get("answer", "")
+    if not answer:
+        print("\n⚠️  No answer to evaluate.")
+        return
+    print("\n⏳  Running RAGAS evaluation (2 LLM judge calls)...")
+    evaluator = RAGASEvaluator()
+    result = evaluator.evaluate_sample(
+        query=query,
+        answer=answer,
+        contexts=contexts,
+        chunks=sources,
+    )
+    print_eval_result(result)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="AI Leadership Insight Agent — Microsoft 10-K Q&A"
@@ -102,6 +141,12 @@ def main() -> None:
         choices=["DEBUG", "INFO", "WARNING"],
         help="Logging verbosity (default: INFO)",
     )
+    parser.add_argument(
+        "--eval", "-e",
+        action="store_true",
+        default=False,
+        help="Run inline RAGAS evaluation after each answer (2 extra LLM calls per query).",
+    )
     args = parser.parse_args()
 
     # Re-init logging if the user changed the level
@@ -110,10 +155,15 @@ def main() -> None:
 
     service = AgentService()
 
+    if args.eval:
+        print("[RAGAS eval mode ON — 2 extra LLM calls per query]")
+
     if args.query:
         # ─── Single-shot mode ──────────────────────────────────────────────────
         response = service.run(args.query)
         print_response(response)
+        if args.eval:
+            run_eval_on_response(args.query, response)
     else:
         # ─── Interactive mode ──────────────────────────────────────────────────
         print(_BANNER)
@@ -127,6 +177,8 @@ def main() -> None:
                     break
                 response = service.run(query)
                 print_response(response)
+                if args.eval:
+                    run_eval_on_response(query, response)
             except KeyboardInterrupt:
                 print("\nGoodbye!")
                 break

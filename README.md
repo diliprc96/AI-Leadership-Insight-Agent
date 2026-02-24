@@ -136,11 +136,14 @@ python leadership_agent/ingest.py --recreate
 # Single query
 python -m leadership_agent.cli --query "What are the key risks in 2024?"
 
-# Also works as:
-python leadership_agent/cli.py --query "What are the key risks?"
+# Single query + inline RAGAS evaluation (2 extra LLM judge calls)
+python -m leadership_agent.cli --query "What are the key risks in 2024?" --eval
 
 # Interactive mode
 python -m leadership_agent.cli
+
+# Interactive mode with RAGAS scoring after every answer
+python -m leadership_agent.cli --eval
 ```
 
 ### Step 2b — FastAPI Server
