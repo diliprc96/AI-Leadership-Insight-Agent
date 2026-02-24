@@ -68,12 +68,13 @@ This agent solves that by:
 
 ## Assumptions
 
-- **Documents:** Three Microsoft 10-K DOCX files (FY2023, FY2024, FY2025) in `data/raw/`
+- **Documents:** Microsoft 10-K DOCX **or PDF** files (FY2023, FY2024, FY2025) in `data/raw/`
+- **PDF type:** Digitally-born (SEC-filed) PDFs work out of the box. Scanned/image PDFs require `PDF_OCR_ENABLED=true` in `.env` (slower, requires `easyocr`/`tesseract`)
 - **AWS credentials** configured in `.env` with Bedrock access to `us-east-1`
 - **Models available:** `amazon.titan-embed-text-v2:0` and `amazon.nova-pro-v1:0`
 - **Run order:** `ingest.py` must be run once before any agent query
 - **Local execution**: Qdrant runs as a local embedded store (no Docker required)
-- **Filename convention:** `<Company>_<Year>_<doctype>.docx` for metadata inference
+- **Filename convention:** `<Company>_<Year>_<doctype>.(docx|pdf)` for metadata inference
 
 ---
 
@@ -103,6 +104,9 @@ cp .env.example .env   # then fill in AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 AWS_ACCESS_KEY_ID=your_key_here
 AWS_SECRET_ACCESS_KEY=your_secret_here
 AWS_DEFAULT_REGION=us-east-1
+
+# Optional — set true only for scanned/image PDFs (requires OCR)
+PDF_OCR_ENABLED=false
 ```
 
 ---
@@ -216,6 +220,43 @@ curl -X POST http://localhost:8000/query \
 | Per-request metrics | `logs/metrics.jsonl` | JSON lines: latency, tool, query |
 | Extracted tables | `data/structured/` | CSV per table per document |
 | API timing header | HTTP response | `X-Process-Time: 4.432` |
+
+---
+
+## Evaluation (RAGAS)
+
+A lightweight RAGAS-compatible evaluation harness is included, using **Amazon Nova Pro as the LLM judge** — no OpenAI dependency.
+
+### Metrics
+
+| Metric | Method | LLM Cost |
+|--------|--------|----------|
+| **Faithfulness** | Is the answer grounded in retrieved context? | Nova Pro judge |
+| **Answer Relevancy** | Does the answer address the question? | Nova Pro judge |
+| **Context Recall** | Fraction of chunks with cosine score ≥ 0.70 | Heuristic (free) |
+
+### Running the Eval
+
+```powershell
+# Run all 10 validation samples
+python -m leadership_agent.eval.run_eval
+
+# Quick smoke test (2 samples)
+python -m leadership_agent.eval.run_eval --samples 2
+
+# Custom output path
+python -m leadership_agent.eval.run_eval --output logs/my_eval.jsonl
+```
+
+Outputs:
+- **Console:** Formatted results table with per-query scores + aggregate averages
+- **File:** `logs/eval_results.jsonl` — one JSON record per query
+
+### Validation Query Set
+
+10 NL questions in `leadership_agent/eval/validation_set.py` covering:
+Key risks · Cloud strategy · AI investments · Competition · Revenue trends ·
+Cybersecurity · Generative AI · Regulation · Gaming · ESG/Sustainability
 
 ---
 

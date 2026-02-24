@@ -989,3 +989,237 @@ AttributeError: 'QdrantClient' object has no attribute 'search'
 [2026-02-24 00:23:38] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode complete in 2.320s
 [2026-02-24 00:23:38] [INFO    ] [leadership_agent.agent.controller] AgentController: done — tool=retriever, answer_len=785, total=7.163s
 [2026-02-24 00:23:38] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() complete — total=7.164s, tools=['retriever'], answer_len=785
+[2026-02-24 01:21:52] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-24 01:22:14] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-24 01:22:55] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-24 01:22:57] [INFO    ] [leadership_agent.services.agent_service] AgentService initialised
+[2026-02-24 01:22:57] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() — query='What are the key risks?'
+[2026-02-24 01:22:57] [INFO    ] [leadership_agent.agent.controller] AgentController: start — query='What are the key risks?'
+[2026-02-24 01:22:57] [INFO    ] [leadership_agent.agent.controller] Building LangGraph StateGraph...
+[2026-02-24 01:22:57] [INFO    ] [leadership_agent.agent.controller] Graph compiled successfully.
+[2026-02-24 01:22:57] [INFO    ] [leadership_agent.agent.planner] PlannerNode: classifying query — 'What are the key risks?'
+[2026-02-24 01:22:59] [INFO    ] [leadership_agent.agent.planner] PlannerNode: selected tool='retriever', reasoning='The query asks for narrative, qualitative information about key risks.', elapsed=2.120s
+[2026-02-24 01:22:59] [INFO    ] [leadership_agent.agent.controller] ToolExecutorNode: invoking tool='retriever'
+[2026-02-24 01:22:59] [INFO    ] [leadership_agent.tools.retriever_tool] RetrieverTool invoked — query: 'What are the key risks?'
+[2026-02-24 01:22:59] [INFO    ] [leadership_agent.embeddings.embedder] TitanEmbedder initialised — model=amazon.titan-embed-text-v2:0, dim=1024, batch_size=32
+[2026-02-24 01:22:59] [INFO    ] [leadership_agent.vectorstore.qdrant_store] QdrantStore initialised — path=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\qdrant_storage, collection=leadership_reports
+[2026-02-24 01:22:59] [INFO    ] [leadership_agent.embeddings.embedder] Embedding 1 texts in 1 batch(es)...
+[2026-02-24 01:23:01] [INFO    ] [leadership_agent.embeddings.embedder] Embedding complete — 1 vectors, dim=1024, elapsed=1.82s
+[2026-02-24 01:23:01] [INFO    ] [leadership_agent.vectorstore.qdrant_store] Search complete — top_k=5, hits=5, elapsed=0.025s
+[2026-02-24 01:23:01] [INFO    ] [leadership_agent.tools.retriever_tool] Retrieved 5 chunks — IDs: ['5ea8d94d', '19a60581', '40b67bb6', '1a23381f', 'dc9ab909'] | Scores: [0.3312, 0.3078, 0.3056, 0.304, 0.3025]
+[2026-02-24 01:23:01] [INFO    ] [leadership_agent.tools.retriever_tool] RetrieverTool completed in 2.201s
+[2026-02-24 01:23:01] [INFO    ] [leadership_agent.agent.controller] ToolExecutorNode complete — elapsed=2.203s, sources=5
+[2026-02-24 01:23:01] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode: composing answer for query='What are the key risks?'
+[2026-02-24 01:23:04] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode: answer_len=805, tokens_in=1917, tokens_out=147
+[2026-02-24 01:23:04] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode complete in 2.689s
+[2026-02-24 01:23:04] [INFO    ] [leadership_agent.agent.controller] AgentController: done — tool=retriever, answer_len=805, total=7.031s
+[2026-02-24 01:23:04] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() complete — total=7.031s, tools=['retriever'], answer_len=805
+[2026-02-24 01:23:18] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-24 01:23:19] [INFO    ] [leadership_agent.services.agent_service] AgentService initialised
+[2026-02-24 01:23:19] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() — query='What are the key risks in 2024?'
+[2026-02-24 01:23:19] [INFO    ] [leadership_agent.agent.controller] AgentController: start — query='What are the key risks in 2024?'
+[2026-02-24 01:23:19] [INFO    ] [leadership_agent.agent.controller] Building LangGraph StateGraph...
+[2026-02-24 01:23:19] [INFO    ] [leadership_agent.agent.controller] Graph compiled successfully.
+[2026-02-24 01:23:19] [INFO    ] [leadership_agent.agent.planner] PlannerNode: classifying query — 'What are the key risks in 2024?'
+[2026-02-24 01:23:21] [INFO    ] [leadership_agent.agent.planner] PlannerNode: selected tool='retriever', reasoning='The query asks about key risks, which are qualitative and narrative in nature.', elapsed=1.952s
+[2026-02-24 01:23:21] [INFO    ] [leadership_agent.agent.controller] ToolExecutorNode: invoking tool='retriever'
+[2026-02-24 01:23:21] [INFO    ] [leadership_agent.tools.retriever_tool] RetrieverTool invoked — query: 'What are the key risks in 2024?'
+[2026-02-24 01:23:21] [INFO    ] [leadership_agent.embeddings.embedder] TitanEmbedder initialised — model=amazon.titan-embed-text-v2:0, dim=1024, batch_size=32
+[2026-02-24 01:23:22] [INFO    ] [leadership_agent.vectorstore.qdrant_store] QdrantStore initialised — path=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\qdrant_storage, collection=leadership_reports
+[2026-02-24 01:23:22] [INFO    ] [leadership_agent.embeddings.embedder] Embedding 1 texts in 1 batch(es)...
+[2026-02-24 01:23:23] [INFO    ] [leadership_agent.embeddings.embedder] Embedding complete — 1 vectors, dim=1024, elapsed=1.85s
+[2026-02-24 01:23:23] [INFO    ] [leadership_agent.vectorstore.qdrant_store] Search complete — top_k=5, hits=5, elapsed=0.020s
+[2026-02-24 01:23:23] [INFO    ] [leadership_agent.tools.retriever_tool] Retrieved 5 chunks — IDs: ['19a60581', '3f525507', '61acd0da', '5ea8d94d', 'dfe3acc8'] | Scores: [0.4096, 0.3984, 0.3971, 0.2878, 0.2845]
+[2026-02-24 01:23:23] [INFO    ] [leadership_agent.tools.retriever_tool] RetrieverTool completed in 2.171s
+[2026-02-24 01:23:23] [INFO    ] [leadership_agent.agent.controller] ToolExecutorNode complete — elapsed=2.174s, sources=5
+[2026-02-24 01:23:23] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode: composing answer for query='What are the key risks in 2024?'
+[2026-02-24 01:23:26] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode: answer_len=668, tokens_in=1971, tokens_out=122
+[2026-02-24 01:23:26] [INFO    ] [leadership_agent.agent.controller] SynthesizerNode complete in 2.229s
+[2026-02-24 01:23:26] [INFO    ] [leadership_agent.agent.controller] AgentController: done — tool=retriever, answer_len=668, total=6.372s
+[2026-02-24 01:23:26] [INFO    ] [leadership_agent.services.agent_service] AgentService.run() complete — total=6.373s, tools=['retriever'], answer_len=668
+[2026-02-24 07:43:46] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-24 07:43:46] [INFO    ] [__main__] Found 1 document(s) to ingest: ['test.pdf']
+[2026-02-24 07:43:46] [INFO    ] [__main__] Starting ingestion for: test.pdf
+[2026-02-24 07:43:46] [INFO    ] [__main__] Inferred metadata: {'company': 'TEST', 'year': 'UNKNOWN', 'document_type': 'UNKNOWN'}
+[2026-02-24 07:43:46] [INFO    ] [__main__] Converter type: DocumentConverter for file: test.pdf
+[2026-02-24 07:43:46] [INFO    ] [docling.datamodel.document] detected formats: [<InputFormat.PDF: 'pdf'>]
+[2026-02-24 07:43:49] [INFO    ] [docling.document_converter] Going to convert document batch...
+[2026-02-24 07:43:49] [INFO    ] [docling.document_converter] Initializing pipeline for StandardPdfPipeline with options hash 42819401a5e7c5e2e7a1a16c259b1966
+[2026-02-24 07:43:49] [INFO    ] [docling.models.factories.base_factory] Loading plugin 'docling_defaults'
+[2026-02-24 07:43:49] [INFO    ] [docling.models.factories] Registered picture descriptions: ['picture_description_vlm_engine', 'vlm', 'api']
+[2026-02-24 07:43:49] [INFO    ] [docling.models.factories.base_factory] Loading plugin 'docling_defaults'
+[2026-02-24 07:43:50] [INFO    ] [docling.models.factories] Registered ocr engines: ['auto', 'easyocr', 'ocrmac', 'rapidocr', 'tesserocr', 'tesseract']
+[2026-02-24 07:43:50] [INFO    ] [docling.models.factories.base_factory] Loading plugin 'docling_defaults'
+[2026-02-24 07:43:50] [INFO    ] [docling.models.factories] Registered layout engines: ['layout_object_detection', 'docling_layout_default', 'docling_experimental_table_crops_layout']
+[2026-02-24 07:43:50] [INFO    ] [docling.utils.accelerator_utils] Accelerator device: 'cpu'
+[2026-02-24 07:43:52] [WARNING ] [huggingface_hub.file_download] Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+[2026-02-24 07:44:20] [ERROR   ] [__main__] Docling conversion failed for test.pdf: [WinError 1314] A required privilege is not held by the client: '..\\..\\blobs\\fcdff16b42e5ebc51d28f59184490c6eff91a88b' -> 'C:\\Users\\Dilip\\.cache\\huggingface\\hub\\models--docling-project--docling-layout-heron\\snapshots\\8f39ad3c0b4c58e9c2d2c84a38465abf757272d8\\preprocessor_config.json'
+Traceback (most recent call last):
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\leadership_agent\ingestion\pdf_parser.py", line 193, in parse_document
+    result = converter.convert(str(file_path))
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\pydantic\_internal\_validate_call.py", line 39, in wrapper_function
+    return wrapper(*args, **kwargs)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\pydantic\_internal\_validate_call.py", line 136, in __call__
+    res = self.__pydantic_validator__.validate_python(pydantic_core.ArgsKwargs(args, kwargs))
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\document_converter.py", line 336, in convert
+    return next(all_res)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\document_converter.py", line 379, in convert_all
+    for conv_res in conv_res_iter:
+                    ^^^^^^^^^^^^^
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\document_converter.py", line 478, in _convert
+    for item in map(
+                ~~~^
+        process_func,
+        ^^^^^^^^^^^^^
+        input_batch,
+        ^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\document_converter.py", line 525, in _process_document
+    conv_res = self._execute_pipeline(in_doc, raises_on_error=raises_on_error)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\document_converter.py", line 546, in _execute_pipeline
+    pipeline = self._get_pipeline(in_doc.format)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\document_converter.py", line 508, in _get_pipeline
+    self.initialized_pipelines[cache_key] = pipeline_class(
+                                            ~~~~~~~~~~~~~~^
+        pipeline_options=pipeline_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\pipeline\standard_pdf_pipeline.py", line 442, in __init__
+    self._init_models()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\pipeline\standard_pdf_pipeline.py", line 464, in _init_models
+    self.layout_model = layout_factory.create_instance(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        options=self.pipeline_options.layout_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        artifacts_path=art_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        accelerator_options=self.pipeline_options.accelerator_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\models\factories\base_factory.py", line 57, in create_instance
+    return _cls(options=options, **kwargs)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\models\stages\layout\layout_model.py", line 66, in __init__
+    self.download_models(layout_model_config=layout_model_config)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\models\stages\layout\layout_model.py", line 100, in download_models
+    return download_hf_model(
+        repo_id=layout_model_config.repo_id,
+    ...<3 lines>...
+        progress=progress,
+    )
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\docling\models\utils\hf_model_download.py", line 20, in download_hf_model
+    download_path = snapshot_download(
+        repo_id=repo_id,
+    ...<2 lines>...
+        revision=revision,
+    )
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\huggingface_hub\_snapshot_download.py", line 332, in snapshot_download
+    thread_map(
+    ~~~~~~~~~~^
+        _inner_hf_hub_download,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        tqdm_class=tqdm_class or hf_tqdm,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\tqdm\contrib\concurrent.py", line 69, in thread_map
+    return _executor_map(ThreadPoolExecutor, fn, *iterables, **tqdm_kwargs)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\tqdm\contrib\concurrent.py", line 51, in _executor_map
+    return list(tqdm_class(ex.map(fn, *iterables, chunksize=chunksize), **kwargs))
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\tqdm\std.py", line 1169, in __iter__
+    for obj in iterable:
+               ^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\huggingface_hub\_snapshot_download.py", line 306, in _inner_hf_hub_download
+    return hf_hub_download(
+        repo_id,
+    ...<15 lines>...
+        headers=headers,
+    )
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\huggingface_hub\file_download.py", line 1014, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<14 lines>...
+        force_download=force_download,
+    )
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\huggingface_hub\file_download.py", line 1188, in _hf_hub_download_to_cache_dir
+    _create_symlink(blob_path, pointer_path, new_blob=True)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\agent_venv\Lib\site-packages\huggingface_hub\file_download.py", line 738, in _create_symlink
+    os.symlink(src_rel_or_abs, abs_dst)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 1314] A required privilege is not held by the client: '..\\..\\blobs\\fcdff16b42e5ebc51d28f59184490c6eff91a88b' -> 'C:\\Users\\Dilip\\.cache\\huggingface\\hub\\models--docling-project--docling-layout-heron\\snapshots\\8f39ad3c0b4c58e9c2d2c84a38465abf757272d8\\preprocessor_config.json'
+[2026-02-24 07:44:20] [INFO    ] [__main__] Cumulative chunk total: 0
+[2026-02-24 07:44:20] [INFO    ] [__main__] All documents ingested. Total chunks: 0
+[2026-02-24 07:46:53] [INFO    ] [root] Logging initialised — level=INFO, file=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\logs\agent.log
+[2026-02-24 07:47:02] [INFO    ] [__main__] ============================================================
+[2026-02-24 07:47:02] [INFO    ] [__main__] INGESTION PIPELINE START
+[2026-02-24 07:47:02] [INFO    ] [__main__] ============================================================
+[2026-02-24 07:47:02] [INFO    ] [__main__] Step 1/3: Parsing documents from C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\data\raw
+[2026-02-24 07:47:02] [INFO    ] [leadership_agent.ingestion.pdf_parser] Found 1 document(s) to ingest: ['test.pdf']
+[2026-02-24 07:47:02] [INFO    ] [leadership_agent.ingestion.pdf_parser] Starting ingestion for: test.pdf
+[2026-02-24 07:47:02] [INFO    ] [leadership_agent.ingestion.pdf_parser] Inferred metadata: {'company': 'TEST', 'year': 'UNKNOWN', 'document_type': 'UNKNOWN'}
+[2026-02-24 07:47:02] [INFO    ] [leadership_agent.ingestion.pdf_parser] Converter type: DocumentConverter for file: test.pdf
+[2026-02-24 07:47:02] [INFO    ] [docling.datamodel.document] detected formats: [<InputFormat.PDF: 'pdf'>]
+[2026-02-24 07:47:02] [INFO    ] [docling.document_converter] Going to convert document batch...
+[2026-02-24 07:47:02] [INFO    ] [docling.document_converter] Initializing pipeline for StandardPdfPipeline with options hash 42819401a5e7c5e2e7a1a16c259b1966
+[2026-02-24 07:47:02] [INFO    ] [docling.models.factories.base_factory] Loading plugin 'docling_defaults'
+[2026-02-24 07:47:02] [INFO    ] [docling.models.factories] Registered picture descriptions: ['picture_description_vlm_engine', 'vlm', 'api']
+[2026-02-24 07:47:02] [INFO    ] [docling.models.factories.base_factory] Loading plugin 'docling_defaults'
+[2026-02-24 07:47:02] [INFO    ] [docling.models.factories] Registered ocr engines: ['auto', 'easyocr', 'ocrmac', 'rapidocr', 'tesserocr', 'tesseract']
+[2026-02-24 07:47:02] [INFO    ] [docling.models.factories.base_factory] Loading plugin 'docling_defaults'
+[2026-02-24 07:47:02] [INFO    ] [docling.models.factories] Registered layout engines: ['layout_object_detection', 'docling_layout_default', 'docling_experimental_table_crops_layout']
+[2026-02-24 07:47:02] [INFO    ] [docling.utils.accelerator_utils] Accelerator device: 'cpu'
+[2026-02-24 07:47:03] [INFO    ] [docling.models.factories.base_factory] Loading plugin 'docling_defaults'
+[2026-02-24 07:47:03] [INFO    ] [docling.models.factories] Registered table structure engines: ['docling_tableformer']
+[2026-02-24 07:47:04] [WARNING ] [huggingface_hub.file_download] Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+[2026-02-24 07:47:04] [WARNING ] [huggingface_hub.file_download] Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+[2026-02-24 07:47:36] [INFO    ] [docling.utils.accelerator_utils] Accelerator device: 'cpu'
+[2026-02-24 07:47:36] [INFO    ] [docling.pipeline.base_pipeline] Processing document test.pdf
+[2026-02-24 07:47:43] [INFO    ] [docling.document_converter] Finished converting document test.pdf in 40.84 sec.
+[2026-02-24 07:47:43] [INFO    ] [leadership_agent.ingestion.pdf_parser] Text chunks created: 22
+[2026-02-24 07:47:43] [WARNING ] [docling_core.types.doc.document] Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+[2026-02-24 07:47:43] [INFO    ] [leadership_agent.ingestion.pdf_parser] Table saved: TEST_UNKNOWN_table_1.csv (31 rows × 4 cols)
+[2026-02-24 07:47:43] [INFO    ] [leadership_agent.ingestion.pdf_parser] Tables saved to data/structured/: 1
+[2026-02-24 07:47:43] [INFO    ] [leadership_agent.ingestion.pdf_parser] Ingestion complete: test.pdf — 22 chunks in 40.95s
+[2026-02-24 07:47:43] [INFO    ] [leadership_agent.ingestion.pdf_parser] Cumulative chunk total: 22
+[2026-02-24 07:47:43] [INFO    ] [leadership_agent.ingestion.pdf_parser] All documents ingested. Total chunks: 22
+[2026-02-24 07:47:43] [INFO    ] [__main__] Step 1/3 complete — 22 chunks produced
+[2026-02-24 07:47:43] [INFO    ] [__main__] Step 2/3: Generating embeddings for 22 chunks...
+[2026-02-24 07:47:43] [INFO    ] [leadership_agent.embeddings.embedder] TitanEmbedder initialised — model=amazon.titan-embed-text-v2:0, dim=1024, batch_size=32
+[2026-02-24 07:47:43] [INFO    ] [leadership_agent.embeddings.embedder] Embedding 22 texts in 1 batch(es)...
+[2026-02-24 07:47:52] [INFO    ] [leadership_agent.embeddings.embedder] Embedding complete — 22 vectors, dim=1024, elapsed=8.95s
+[2026-02-24 07:47:52] [INFO    ] [__main__] Step 2/3 complete — 22 embeddings, dim=1024
+[2026-02-24 07:47:52] [INFO    ] [__main__] Step 3/3: Storing vectors in Qdrant...
+[2026-02-24 07:47:53] [INFO    ] [leadership_agent.vectorstore.qdrant_store] QdrantStore initialised — path=C:\Users\Dilip\workspace\AI-Leadership-Insight-Agent\qdrant_storage, collection=leadership_reports
+[2026-02-24 07:47:53] [INFO    ] [leadership_agent.vectorstore.qdrant_store] Collection 'leadership_reports' already exists — skipping creation.
+[2026-02-24 07:47:53] [INFO    ] [leadership_agent.vectorstore.qdrant_store] Upserted 22 points in 0.08s — collection total: 2390
+[2026-02-24 07:47:53] [INFO    ] [__main__] ============================================================
+[2026-02-24 07:47:53] [INFO    ] [__main__] INGESTION COMPLETE
+[2026-02-24 07:47:53] [INFO    ] [__main__]   Documents parsed : 1 files
+[2026-02-24 07:47:53] [INFO    ] [__main__]   Chunks created   : 22
+[2026-02-24 07:47:53] [INFO    ] [__main__]   Vectors stored   : 22
+[2026-02-24 07:47:53] [INFO    ] [__main__]   Total time       : 51.22s
+[2026-02-24 07:47:53] [INFO    ] [__main__]   Collection total : 2390
+[2026-02-24 07:47:53] [INFO    ] [__main__] ============================================================

@@ -43,7 +43,7 @@ def run_ingestion(recreate: bool = False) -> None:
     chunks = ingest_all(DATA_RAW_DIR)
 
     if not chunks:
-        logger.error("No chunks produced. Ensure DOCX files are in data/raw/.")
+        logger.error("No chunks produced. Ensure DOCX or PDF files are in data/raw/.")
         sys.exit(1)
 
     logger.info("Step 1/3 complete — %d chunks produced", len(chunks))

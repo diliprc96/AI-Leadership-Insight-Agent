@@ -33,9 +33,33 @@ from leadership_agent.config import (
     DATA_RAW_DIR,
     DATA_STRUCTURED_DIR,
     COMPANY_MAP,
+    PDF_OCR_ENABLED,
 )
 
 logger = logging.getLogger(__name__)
+
+
+# ─── Converter Factory ───────────────────────────────────────────────────────
+
+def _build_converter(file_path: Path) -> DocumentConverter:
+    """
+    Return a Docling DocumentConverter configured for the given file type.
+
+    - DOCX : plain converter (Docling handles DOCX natively, no PDF options needed)
+    - PDF  : explicit PdfFormatOption with OCR on/off via PDF_OCR_ENABLED config.
+              Default is False — digitally-born SEC 10-K PDFs don't need OCR.
+              Set PDF_OCR_ENABLED=true in .env for scanned/image-based PDFs.
+    """
+    if file_path.suffix.lower() == ".pdf":
+        pdf_opts = PdfPipelineOptions(do_ocr=PDF_OCR_ENABLED)
+        logger.debug(
+            "PDF converter — OCR enabled: %s", PDF_OCR_ENABLED
+        )
+        return DocumentConverter(
+            format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=pdf_opts)}
+        )
+    logger.debug("DOCX converter selected for: %s", file_path.name)
+    return DocumentConverter()
 
 
 # ─── Metadata Inference ────────────────────────────────────────────────────────
@@ -164,7 +188,8 @@ def parse_document(file_path: str | Path) -> list[dict[str, Any]]:
 
     # ── Convert document ──────────────────────────────────────────────────────
     try:
-        converter = DocumentConverter()
+        converter = _build_converter(file_path)
+        logger.info("Converter type: %s for file: %s", type(converter).__name__, file_path.name)
         result = converter.convert(str(file_path))
         doc = result.document
     except Exception as exc:

@@ -20,6 +20,12 @@ AWS_SECRET_ACCESS_KEY: str = os.getenv("AWS_SECRET_ACCESS_KEY", "")
 AWS_DEFAULT_REGION: str = os.getenv("AWS_DEFAULT_REGION", "us-east-1")
 
 
+# ─── PDF Ingestion ────────────────────────────────────────────────────────────
+# Set PDF_OCR_ENABLED=true in .env only for scanned/image PDFs.
+# Digitally-born SEC 10-K PDFs do NOT need OCR (and it would be slow).
+PDF_OCR_ENABLED: bool = os.getenv("PDF_OCR_ENABLED", "false").lower() == "true"
+
+
 # ─── Embedding Model ──────────────────────────────────────────────────────────
 EMBEDDING_MODEL_ID: str = "amazon.titan-embed-text-v2:0"
 EMBEDDING_DIMENSION: int = 1024
@@ -49,6 +55,7 @@ LOGS_DIR: Path = _PROJECT_ROOT / "logs"
 PLOT_OUTPUT_PATH: Path = STATIC_DIR / "trend.png"
 METRICS_FILE: Path = LOGS_DIR / "metrics.jsonl"
 LOG_FILE: Path = LOGS_DIR / "agent.log"
+EVAL_RESULTS_FILE: Path = LOGS_DIR / "eval_results.jsonl"
 
 # Ensure directories exist at import time
 for _dir in [DATA_RAW_DIR, DATA_STRUCTURED_DIR, STATIC_DIR, LOGS_DIR]:
