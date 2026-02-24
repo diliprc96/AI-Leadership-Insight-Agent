@@ -1,0 +1,279 @@
+==============================================================================
+RE: Assignment Submission — AI Leadership Insight Agent
+==============================================================================
+
+Hi [Name],
+
+Thank you for the detailed brief. Please find my solution submission below.
+The GitHub repo is public and fully runnable with your own API key.
+
+------------------------------------------------------------------------------
+GITHUB REPOSITORY
+------------------------------------------------------------------------------
+
+Repository : https://github.com/diliprc96/AI-Leadership-Insight-Agent
+Branch     : main
+
+------------------------------------------------------------------------------
+SOLUTION SUMMARY
+------------------------------------------------------------------------------
+
+I built an agentic Retrieval-Augmented Generation (RAG) system that accepts
+Natural Language (NL) questions about corporate leadership / financial filings
+and returns structured NL answers with cited sources, confidence scores, and
+latency metrics.
+
+Data source: Microsoft Annual 10-K filings for FY2023, FY2024, and FY2025
+(SEC public disclosures) — rich in MD&A, Risk Factors, Strategy, Competition.
+
+The system supports both DOCX and PDF file formats for ingestion, and includes
+three active tools: narrative retrieval, financial trend analysis, and chart
+generation.
+
+------------------------------------------------------------------------------
+ARCHITECTURE
+------------------------------------------------------------------------------
+
+INGESTION PIPELINE (run once, supports DOCX + PDF):
+  data/raw/*.docx / *.pdf
+    → Docling (DOCX/PDF parsing, table extraction, layout preservation)
+    → Character-level chunking (1200 chars / 200 overlap)
+    → Section tagging (Risk Factors, MD&A, Strategy, Competition, etc.)
+    → Amazon Titan Embed Text v2 (1024-dim embeddings via AWS Bedrock)
+    → Local Qdrant vector store (cosine similarity, no Docker required)
+    → Structured tables exported to data/structured/*.csv
+
+AGENT PIPELINE (per query — three active tools):
+  NL User Query
+    → Two-stage Planner
+         Stage 1: Keyword match → routes instantly (0ms cost)
+           • "revenue / trend / compare"  → financial_tool
+           • "plot / chart / graph"        → plot_tool
+           • everything else               → retriever_tool
+         Stage 2: LLM fallback → Amazon Nova Pro decides if keyword unclear
+
+    → Tool Execution (one of three):
+         1. RetrieverTool    — Qdrant top-5 semantic search → cited chunks
+         2. FinancialTool    — CSV-based YoY growth analysis (USD millions)
+         3. PlotTool         — Matplotlib bar+trend chart → static/trend.png
+
+    → Synthesiser (Amazon Nova Pro via Converse API)
+         Composes grounded NL answer from tool output
+    → Structured NL Output
+         Answer | Tool used | Sources/data | Chart path | Timing breakdown
+
+ORCHESTRATION: LangGraph StateGraph (Planner → ToolExecutor → Synthesiser)
+API LAYER:     FastAPI (POST /query) + CLI interface
+
+------------------------------------------------------------------------------
+MODELS USED  (configurable in .env)
+------------------------------------------------------------------------------
+
+  Embedding Model : amazon.titan-embed-text-v2:0   (AWS Bedrock, us-east-1)
+  LLM             : amazon.nova-pro-v1:0            (AWS Bedrock, us-east-1)
+
+To test with your own key, update the .env file:
+
+  AWS_ACCESS_KEY_ID=<your_key>
+  AWS_SECRET_ACCESS_KEY=<your_secret>
+  AWS_DEFAULT_REGION=us-east-1
+  PDF_OCR_ENABLED=false     # set true only for scanned/image PDFs
+
+------------------------------------------------------------------------------
+HOW TO RUN
+------------------------------------------------------------------------------
+
+Step 1 — Clone and install:
+
+  git clone https://github.com/diliprc96/AI-Leadership-Insight-Agent.git
+  cd AI-Leadership-Insight-Agent
+  python -m venv agent_venv
+  .\agent_venv\Scripts\Activate.ps1         # Windows
+  pip install -r requirements.txt
+  cp .env.example .env                       # fill in AWS credentials
+
+Step 2 — (Optional) Add raw documents to data/raw/ and re-ingest:
+
+  Supported formats: .docx or .pdf
+  Naming convention: MSFT_FY24Q4_10K.docx (or .pdf)
+  (Microsoft 10-K files available from SEC EDGAR)
+
+  python -m leadership_agent.ingest         # re-ingests and re-embeds
+
+  NOTE: Sample financial CSVs are already included in data/structured/
+  so the financial and plot tools work immediately after clone — no
+  re-ingestion required to test those features.
+
+Step 3a — CLI (narrative Q&A):
+
+  python -m leadership_agent.cli --query "What are the key risks in FY2024?"
+
+  # Financial trend query:
+  python -m leadership_agent.cli --query "What was Microsoft revenue growth 2023 to 2025?"
+
+  # Plot chart:
+  python -m leadership_agent.cli --query "Plot Microsoft revenue chart"
+
+  # With inline RAGAS evaluation:
+  python -m leadership_agent.cli --query "What are the key risks?" --eval
+
+  # Interactive mode:
+  python -m leadership_agent.cli
+
+Step 3b — FastAPI server:
+
+  uvicorn leadership_agent.app:app --reload --port 8000
+  curl -X POST http://localhost:8000/query \
+       -H "Content-Type: application/json" \
+       -d '{"query": "What are the key risks Microsoft faces in FY2024?"}'
+
+Step 4 — RAGAS evaluation (optional):
+
+  python -m leadership_agent.eval.run_eval --samples 2   # quick smoke test
+  python -m leadership_agent.eval.run_eval               # full 10-query set
+
+------------------------------------------------------------------------------
+SAMPLE NL INPUT → NL OUTPUT  (three tool types)
+------------------------------------------------------------------------------
+
+TOOL 1 — RETRIEVER (narrative Q&A)
+
+  INPUT : "What are the key risks Microsoft faces in FY2024?"
+
+  OUTPUT:
+    Microsoft identifies several key risks in its FY2024 10-K filing.
+    Cybersecurity threats, including attacks by nation-state actors and
+    ransomware groups, remain the top operational risk. The company also
+    flags significant regulatory risk as global AI legislation (EU AI Act,
+    US executive orders) continues to evolve. Supply chain dependencies on
+    third-party hardware manufacturers pose concentration risk. Additionally,
+    Microsoft highlights competitive pressure from Google, Amazon, Meta, and
+    OpenAI in the AI/cloud space.
+
+    SOURCES (5):
+      [0.842] Microsoft FY2024 — Risk Factors
+      [0.831] Microsoft FY2024 — Risk Factors
+      [0.819] Microsoft FY2023 — Risk Factors
+      [0.801] Microsoft FY2025 — Risk Factors
+      [0.788] Microsoft FY2024 — MD&A
+
+    TIMING: Planner: 0.00s | Retrieval: 1.24s | LLM: 3.17s | Total: 4.43s
+
+---
+
+TOOL 2 — FINANCIAL (quantitative trend analysis)
+
+  INPUT : "What was Microsoft revenue growth from 2023 to 2025?"
+
+  OUTPUT:
+    Microsoft's total revenue grew from $211,915M in FY2023 to $245,122M in
+    FY2024 (+15.67% YoY), and further to $279,011M in FY2025 (+13.83% YoY),
+    representing cumulative growth of ~31.7% across three fiscal years.
+
+    DATA:
+      FY2023 : $211,915M
+      FY2024 : $245,122M  (+15.67% YoY)
+      FY2025 : $279,011M  (+13.83% YoY)
+
+    TIMING: Planner: 0.00s | Tool: 0.01s | LLM: 2.76s | Total: 2.79s
+
+---
+
+TOOL 3 — PLOT (chart generation)
+
+  INPUT : "Plot Microsoft revenue trend chart 2023 to 2025"
+
+  OUTPUT:
+    Bar + trend line chart saved to: static/trend.png
+    (Microsoft Revenue Trend FY2023–FY2025, USD millions)
+
+    TIMING: Planner: 0.00s | Tool: 0.45s | LLM: 2.23s | Total: 2.68s
+
+------------------------------------------------------------------------------
+EVALUATION FRAMEWORK (RAGAS)
+------------------------------------------------------------------------------
+
+A RAGAS-compatible evaluation harness is included using Amazon Nova Pro as
+the LLM judge — no OpenAI dependency required.
+
+Metrics:
+  1. Faithfulness     — Is the answer grounded in retrieved context? (0–1)
+  2. Answer Relevancy — Does the answer address the question?        (0–1)
+  3. Context Recall   — Fraction of chunks with cosine score >= 0.50 (0–1)
+
+Validation set: 10 NL questions covering key risks, cloud strategy, AI
+investments, competition, revenue, cybersecurity, generative AI, regulation,
+gaming, and ESG — aligned with the Adobe assignment sample queries.
+
+Output: formatted score table (console) + logs/eval_results.jsonl
+
+------------------------------------------------------------------------------
+ASSUMPTIONS
+------------------------------------------------------------------------------
+
+1. Data scope    : Microsoft 10-K DOCX or PDF files (FY2023–FY2025).
+                   Publicly available from SEC EDGAR.
+2. API key       : AWS Bedrock (us-east-1). Reviewer needs an AWS account
+                   with model access enabled for titan-embed-text-v2 and
+                   amazon.nova-pro-v1.
+3. Sample CSVs   : data/structured/ is included in the repo. Financial and
+                   plot tools work immediately after clone with these files.
+4. PDF type      : Digitally-born PDFs work out of the box. Scanned/image
+                   PDFs require PDF_OCR_ENABLED=true in .env.
+5. Ground truth  : No fixed labels available. Validation via RAGAS scores,
+                   source citation quality, and qualitative review.
+6. NL Output     : Every response includes free-text answer, cited sources
+                   (with similarity scores), tool used, and latency breakdown.
+
+------------------------------------------------------------------------------
+DESIGN DECISIONS
+------------------------------------------------------------------------------
+
+  Local Qdrant              — No cloud dependency; data stays private
+  Amazon Titan Embed v2     — Native Bedrock; 1024-dim semantic space
+  Amazon Nova Pro           — Cost-efficient LLM judge + answer synthesiser
+  Two-stage planner         — Keyword match (0ms) + LLM fallback
+  Three active tools        — Retriever, Financial, Plot (all dispatched live)
+  Docling (DOCX + PDF)      — Handles complex layout + table extraction
+  LangGraph                 — Explicit node-edge graph; auditable pipeline
+  RAGAS with Bedrock judge  — No OpenAI dependency for evaluation
+  --eval CLI flag           — Opt-in inline RAGAS scoring per query
+
+------------------------------------------------------------------------------
+OBSERVABILITY
+------------------------------------------------------------------------------
+
+  Structured logs    : logs/agent.log           (rotating, 10MB x 5 files)
+  Per-request JSONL  : logs/metrics.jsonl       (latency, tool, query)
+  Eval results JSONL : logs/eval_results.jsonl  (RAGAS scores per query)
+  Sample CSVs        : data/structured/         (committed, ready to use)
+  Generated charts   : static/trend.png         (overwritten per plot query)
+
+==============================================================================
+NOTES FOR REVIEWER
+==============================================================================
+
+1. AWS BEDROCK DEPENDENCY:
+   You need an AWS account with Bedrock model access enabled for:
+     - amazon.titan-embed-text-v2:0
+     - amazon.nova-pro-v1:0
+   Both are available in us-east-1. Free tier or pay-per-use applies.
+   Happy to assist with setup if needed.
+
+2. SAMPLE DATA INCLUDED:
+   data/structured/ contains 3 clean income statement CSVs (FY23/24/25)
+   with real Microsoft 10-K figures. The financial and plot tools will
+   work immediately after clone without re-ingestion.
+
+3. RAG DATA (narrative queries):
+   For narrative Q&A, the Qdrant vector store needs to be populated.
+   Add Microsoft 10-K DOCX/PDF files to data/raw/ and run:
+     python -m leadership_agent.ingest
+   SEC EDGAR direct links are in the README.
+
+4. GITHUB REPO VISIBILITY:
+   Confirm the repo is set to Public before sending this mail.
+
+==============================================================================
+END OF REPORT
+==============================================================================

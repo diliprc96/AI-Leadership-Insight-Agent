@@ -5,5 +5,3 @@ __pycache__/
 *.pyc
 *.pyo
 *.bkp
-data/structured/
-data/raw/
