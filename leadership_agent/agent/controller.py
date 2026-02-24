@@ -28,17 +28,10 @@ from leadership_agent.config import (
 from leadership_agent.agent.state import AgentState
 from leadership_agent.agent.planner import planner_node
 from leadership_agent.tools.retriever_tool import retriever_tool
-
-# ── Phase 2 tools (implemented, not yet stable — disabled for v1.0) ────────────
-# from leadership_agent.tools.financial_tool import financial_tool
-# from leadership_agent.tools.plot_tool import plot_tool
+from leadership_agent.tools.financial_tool import financial_tool
+from leadership_agent.tools.plot_tool import plot_tool
 
 logger = logging.getLogger(__name__)
-
-_PHASE2_NOTE = (
-    "Financial trend analysis and chart generation are planned for Phase 2. "
-    "Searching the narrative report text instead."
-)
 
 
 # ─── Bedrock client (lazy singleton) ──────────────────────────────────────────
@@ -61,11 +54,12 @@ def _get_bedrock():
 
 def tool_executor_node(state: AgentState) -> AgentState:
     """
-    v1.0: Only the RetrieverTool is active.
+    Dispatches to the appropriate tool based on the planner's decision.
 
-    If the planner routes to 'financial' or 'plot', we redirect to the
-    retriever and append a Phase 2 note.  Tool files remain in the repo
-    for Phase 2 activation.
+    Tools:
+      - retriever  : Semantic search over 10-K narrative text (Qdrant)
+      - financial  : Year-over-year analysis from structured CSV tables
+      - plot       : Matplotlib trend chart saved to static/trend.png
     """
     plan = state["plan"]
     query = state["query"]
@@ -73,63 +67,65 @@ def tool_executor_node(state: AgentState) -> AgentState:
 
     tool_output = ""
     sources: list[dict[str, Any]] = []
+    image_path: str | None = None
     error = None
-    phase2_redirected = False
 
-    # ── Phase 2 redirect ─────────────────────────────────────────────────────
-    if plan in ("financial", "plot"):
-        logger.info(
-            "ToolExecutorNode: '%s' is a Phase 2 feature — redirecting to retriever. query=%r",
-            plan, query[:80],
-        )
-        phase2_redirected = True
-        plan = "retriever"
-
-    logger.info("ToolExecutorNode: invoking tool='retriever'")
+    logger.info("ToolExecutorNode: invoking tool='%s'", plan)
 
     try:
-        raw = retriever_tool.invoke({"query": query})
-        tool_output = raw
-        parsed = json.loads(raw)
-        if parsed.get("status") == "ok":
-            sources = [
-                {
-                    "id":   c["id"],
-                    "score": c["score"],
-                    "text": c["text"],          # ← included for RAGAS context extraction
-                    **c["metadata"],
-                }
-                for c in parsed.get("chunks", [])
-            ]
-        elif parsed.get("status") == "empty":
-            logger.warning("RetrieverTool: no results for query=%r", query[:80])
+        if plan == "retriever":
+            raw = retriever_tool.invoke({"query": query})
+            tool_output = raw
+            parsed = json.loads(raw)
+            if parsed.get("status") == "ok":
+                sources = [
+                    {
+                        "id":    c["id"],
+                        "score": c["score"],
+                        "text":  c["text"],
+                        **c["metadata"],
+                    }
+                    for c in parsed.get("chunks", [])
+                ]
+            elif parsed.get("status") == "empty":
+                logger.warning("RetrieverTool: no results for query=%r", query[:80])
+
+        elif plan == "financial":
+            raw = financial_tool.invoke({"query": query})
+            tool_output = raw
+            logger.info("FinancialTool output: %s", raw[:200])
+
+        elif plan == "plot":
+            raw = plot_tool.invoke({"query": query})
+            tool_output = raw
+            parsed_plot = json.loads(raw)
+            if parsed_plot.get("status") == "ok":
+                image_path = parsed_plot.get("image_path")
+                logger.info("PlotTool: chart saved to %s", image_path)
+
+        else:
+            # Unknown plan — fall back to retriever
+            logger.warning("Unknown plan '%s' — falling back to retriever", plan)
+            raw = retriever_tool.invoke({"query": query})
+            tool_output = raw
 
     except Exception as exc:
         logger.error("ToolExecutorNode error: %s", exc, exc_info=True)
         error = str(exc)
         tool_output = json.dumps({"status": "error", "message": error})
 
-    # Inject phase2 note so synthesizer can mention it gracefully
-    if phase2_redirected:
-        try:
-            parsed_out = json.loads(tool_output)
-            parsed_out["phase2_note"] = _PHASE2_NOTE
-            tool_output = json.dumps(parsed_out)
-        except Exception:
-            pass
-
     elapsed = time.perf_counter() - t0
     logger.info(
-        "ToolExecutorNode complete — elapsed=%.3fs, sources=%d",
-        elapsed, len(sources),
+        "ToolExecutorNode complete — elapsed=%.3fs, sources=%d, image=%s",
+        elapsed, len(sources), image_path,
     )
 
     return {
         **state,
         "tool_outputs": tool_output,
-        "tools_used": ["retriever"],
+        "tools_used": [plan],
         "sources": sources,
-        "image_path": None,
+        "image_path": image_path,
         "error": error,
         "metrics": {
             **state.get("metrics", {}),
