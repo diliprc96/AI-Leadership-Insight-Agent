@@ -33,8 +33,12 @@ from leadership_agent.config import (
 
 logger = logging.getLogger(__name__)
 
-# Minimum cosine similarity score to count a chunk as "recalled"
-CONTEXT_RECALL_THRESHOLD: float = 0.70
+# Minimum cosine similarity score to count a chunk as "recalled".
+# 0.50 is the practical threshold for Titan Embed v2 cosine scores:
+#   - Scores > 0.70: strong semantic match (typical for well-matched DOCX chunks)
+#   - Scores 0.50–0.70: relevant match (acceptable for cross-doc or PDF chunks)
+#   - Scores < 0.50: weak / tangential match
+CONTEXT_RECALL_THRESHOLD: float = 0.50
 
 
 # ─── Result Dataclass ─────────────────────────────────────────────────────────

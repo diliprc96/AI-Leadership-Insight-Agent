@@ -14,6 +14,13 @@ import argparse
 import logging
 import sys
 import time
+from pathlib import Path
+
+# Ensure project root is on sys.path (works for both `python leadership_agent/ingest.py`
+# and `python -m leadership_agent.ingest` invocation styles)
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
 
 from leadership_agent.logging_config import setup_logging
 setup_logging("INFO")

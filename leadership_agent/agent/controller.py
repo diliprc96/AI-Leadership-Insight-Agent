@@ -93,7 +93,12 @@ def tool_executor_node(state: AgentState) -> AgentState:
         parsed = json.loads(raw)
         if parsed.get("status") == "ok":
             sources = [
-                {"id": c["id"], "score": c["score"], **c["metadata"]}
+                {
+                    "id":   c["id"],
+                    "score": c["score"],
+                    "text": c["text"],          # ← included for RAGAS context extraction
+                    **c["metadata"],
+                }
                 for c in parsed.get("chunks", [])
             ]
         elif parsed.get("status") == "empty":
