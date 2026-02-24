@@ -17,6 +17,12 @@ import sys
 import textwrap
 from pathlib import Path
 
+# ── Force UTF-8 output on Windows (prevents cp1252 UnicodeEncodeError with emoji) ─
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if sys.stderr.encoding and sys.stderr.encoding.lower() != "utf-8":
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 # ── Ensure project root is on sys.path (works for both invocation styles) ─────
 # When run as `python leadership_agent/cli.py`, the parent dir may not be on path.
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
